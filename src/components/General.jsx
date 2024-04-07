@@ -21,12 +21,13 @@ function General() {
   };
 
   const saveChanges = () => {
-    // TODO logic to save changes
+    // TODO: logic to save changes
     setIsEditing(false);
   };
 
   if (isEditing) {
     return (
+      // TODO: input validation
       <div className="general">
         <h2>General</h2>
         <div className="inputNameFields">
