@@ -78,16 +78,16 @@ function General() {
       {/* <label htmlFor="fullName">Name</label>
       <output name="fullName"> {fullName}</output> */}
 
-      <p>
+      <p className="outputContainer">
         <strong>Name:</strong> {fullName}
       </p>
-      <p>
+      <p className="outputContainer">
         <strong>Age:</strong> {formData.age}
       </p>
-      <p>
+      <p className="outputContainer">
         <strong>Email:</strong> {formData.email}
       </p>
-      <p>
+      <p className="outputContainer">
         <strong>Phone:</strong> {formData.phone}
       </p>
       <Button onClick={toggleEdit} text="Edit" />

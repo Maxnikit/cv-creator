@@ -7,7 +7,12 @@ body {
   flex-direction: column;
   gap: 10px;
 }
-.general > p {
+.education {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.outputContainer {
   margin: 0;
   height: 50px;
   display: flex;

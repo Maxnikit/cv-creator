@@ -12,11 +12,28 @@ function Education() {
     studyDateStart: "",
     studyDateEnd: "",
   });
+  const [selectedDateStart, setSelectedDateStart] = useState({
+    month: 9,
+    year: 2020,
+    monthName: "",
+  });
+  const [selectedDateEnd, setSelectedDateEnd] = useState({
+    month: 4,
+    year: 2024,
+    monthName: "",
+  });
   let fullDate;
-  if (formData.studyDateStart) {
-    fullDate = formData.studyDateStart + " - " + formData.studyDateEnd;
+  if (selectedDateStart.monthName && selectedDateEnd.monthName) {
+    fullDate =
+      selectedDateStart.monthName +
+      " " +
+      selectedDateStart.year +
+      " - " +
+      selectedDateEnd.monthName +
+      " " +
+      selectedDateEnd.year;
   }
-
+  console.log(selectedDateStart);
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
@@ -54,23 +71,17 @@ function Education() {
           placeholder="Degree"
           onChange={handleInputChange}
         />
-        <Input
-          type="number"
-          name="studyDateStart"
-          value={formData.studyDateStart}
-          placeholder="Start Date"
-          onChange={handleInputChange}
-        />
+
         {/* TODO: разобраться с Example: https://www.react-lite-month-picker.dev/ */}
-        <Example />
-        <Example />
-        <Input
-          type="text"
-          name="studyDateEnd"
-          value={formData.studyDateEnd}
-          placeholder="End Date"
-          onChange={handleInputChange}
+        <Example
+          selectedMonthData={selectedDateStart}
+          setSelectedMonthData={setSelectedDateStart}
         />
+        <Example
+          selectedMonthData={selectedDateEnd}
+          setSelectedMonthData={setSelectedDateEnd}
+        />
+
         <Button text="Save" onClick={saveChanges} />
       </div>
     );
@@ -78,16 +89,16 @@ function Education() {
   return (
     <div className="education">
       <h2>Education</h2>
-      <p>
+      <p className="outputContainer">
         <strong>School:</strong> {formData.school}
       </p>
-      <p>
+      <p className="outputContainer">
         <strong>Degree:</strong> {formData.degree}
       </p>
-      <p>
+      <p className="outputContainer">
         <strong>Date:</strong> {fullDate}
       </p>
-      <p>
+      <p className="outputContainer">
         <strong>City:</strong> {formData.city}
       </p>
       <Button text="Edit" onClick={toggleEdit} />

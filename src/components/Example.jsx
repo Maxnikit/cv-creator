@@ -1,11 +1,7 @@
 import { useState } from "react";
 import { MonthPicker, MonthInput } from "react-lite-month-picker";
 
-function Example() {
-  const [selectedMonthData, setSelectedMonthData] = useState({
-    month: 9,
-    year: 2023,
-  });
+function Example({ selectedMonthData, setSelectedMonthData }) {
   const [isPickerOpen, setIsPickerOpen] = useState(false);
 
   return (
