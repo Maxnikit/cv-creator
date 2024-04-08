@@ -2,15 +2,36 @@ body {
   display: flex;
   flex-direction: column;
 }
+#root {
+  width: 100%;
+}
+.main {
+  display: grid;
+  grid-template-columns: 1fr 1fr 3fr;
+  /* gap: 10px; */
+}
+.main > * {
+  padding: 10px;
+  margin: 20px;
+  background-color: rgb(72, 38, 165);
+  border-radius: 10px;
+}
 .general {
+  grid-column: 1/2;
+
   display: flex;
   flex-direction: column;
   gap: 10px;
 }
 .education {
+  grid-column: 1/2;
+
   display: flex;
   flex-direction: column;
   gap: 10px;
+}
+.experience {
+  grid-column: 1/2;
 }
 .experience > .job {
   display: flex;
@@ -24,13 +45,15 @@ body {
   flex-direction: column;
 }
 .input-container {
+  width: 100%;
   display: flex;
   flex-direction: column;
   /* box-sizing: border-box; */
   height: 50px;
   /* width: 100%; */
 }
-
+.checkboxContainer {
+}
 .inputNameFields {
   display: flex;
   gap: 10px;

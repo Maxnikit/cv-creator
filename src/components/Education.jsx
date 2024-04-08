@@ -2,6 +2,10 @@ import { useState } from "react";
 import Button from "./Button";
 import Input from "./Input";
 import Example from "./Example";
+import Accordion from "@mui/material/Accordion";
+import AccordionDetails from "@mui/material/AccordionDetails";
+import AccordionSummary from "@mui/material/AccordionSummary";
+import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 
 function Education() {
   const [isEditing, setIsEditing] = useState(false);
@@ -102,7 +106,7 @@ function Education() {
           selectedMonthData={selectedDateStart}
           setSelectedMonthData={setSelectedDateStart}
         />
-        <div>
+        <div className="checkboxContainer">
           <input
             type="checkbox"
             onChange={handleCheckboxChange}
@@ -110,14 +114,15 @@ function Education() {
             id="checkbox"
           />
           <label htmlFor="checkbox">Up to current time</label>
-          {!isChecked && (
-            <Example
-              text="End Date:"
-              selectedMonthData={selectedDateEnd}
-              setSelectedMonthData={setSelectedDateEnd}
-            />
-          )}
         </div>
+        {!isChecked && (
+          <Example
+            text="End Date:"
+            selectedMonthData={selectedDateEnd}
+            setSelectedMonthData={setSelectedDateEnd}
+          />
+        )}
+
         <Button text="Confirm" onClick={saveChanges} />
       </div>
     );

@@ -108,6 +108,7 @@ function Job({ setButtonVisible }) {
             onChange={handleInputChange}
           />
           <Button type="submit" text="Confirm" />
+          <Button type="button" text="Cancel" onClick={toggleEdit} />
         </div>
       </form>
     );
