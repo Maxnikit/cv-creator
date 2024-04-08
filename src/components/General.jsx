@@ -31,7 +31,7 @@ function General() {
 
   return (
     <div className="general">
-      <Accordion defaultExpanded>
+      <Accordion defaultExpanded className="accordion">
         <AccordionSummary
           expandIcon={<ExpandMoreIcon />}
           aria-controls="panel1-content"

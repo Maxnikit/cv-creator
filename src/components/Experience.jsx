@@ -19,16 +19,27 @@ function Experience() {
     ]);
   };
 
-  //TODO Вместо показа уже сделанного JOB нужно создавать новые компоненты
+  // TODO Пофиксить кнопку Cancel
   return (
     <div className="experience">
-      <h2>Experience</h2>
-      {jobs.map((job, index) => (
-        <div key={index}>{job}</div>
-      ))}
-      {buttonVisible && (
-        <Button type="button" text="Add Job" onClick={handleAddJob} />
-      )}
+      <Accordion>
+        <AccordionSummary
+          expandIcon={<ExpandMoreIcon />}
+          aria-controls="panel1-content"
+          id="panel1-header"
+        >
+          <h2>Experience</h2>
+        </AccordionSummary>
+
+        <AccordionDetails>
+          {jobs.map((job, index) => (
+            <div key={index}>{job}</div>
+          ))}
+          {buttonVisible && (
+            <Button type="button" text="Add Job" onClick={handleAddJob} />
+          )}
+        </AccordionDetails>
+      </Accordion>
     </div>
   );
 }
