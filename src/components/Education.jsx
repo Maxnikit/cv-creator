@@ -22,6 +22,10 @@ function Education() {
     year: 2024,
     monthName: "",
   });
+  const [isChecked, setIsChecked] = useState(true);
+  const handleCheckboxChange = () => {
+    setIsChecked(!isChecked);
+  };
   let fullDate;
   if (selectedDateStart.monthName && selectedDateEnd.monthName) {
     fullDate =
@@ -32,6 +36,13 @@ function Education() {
       selectedDateEnd.monthName +
       " " +
       selectedDateEnd.year;
+  } else if (selectedDateStart.monthName && isChecked) {
+    fullDate =
+      selectedDateStart.monthName +
+      " " +
+      selectedDateStart.year +
+      " - " +
+      "Present";
   }
   console.log(selectedDateStart);
   const handleInputChange = (e) => {
@@ -77,10 +88,21 @@ function Education() {
           selectedMonthData={selectedDateStart}
           setSelectedMonthData={setSelectedDateStart}
         />
-        <Example
-          selectedMonthData={selectedDateEnd}
-          setSelectedMonthData={setSelectedDateEnd}
-        />
+        <div>
+          <input
+            type="checkbox"
+            onChange={handleCheckboxChange}
+            checked={isChecked}
+            id="checkbox"
+          />{" "}
+          <label htmlFor="checkbox">Up to current time</label>{" "}
+          {!isChecked && (
+            <Example
+              selectedMonthData={selectedDateEnd}
+              setSelectedMonthData={setSelectedDateEnd}
+            />
+          )}
+        </div>
 
         <Button text="Save" onClick={saveChanges} />
       </div>
