@@ -1,12 +1,13 @@
 import { useState } from "react";
 import { MonthPicker, MonthInput } from "react-lite-month-picker";
 
-function Example({ selectedMonthData, setSelectedMonthData }) {
+function Example({ selectedMonthData, setSelectedMonthData, text }) {
   const [isPickerOpen, setIsPickerOpen] = useState(false);
 
   return (
     <>
-      <div>
+      <div className="date-container">
+        {text}
         <MonthInput
           selected={selectedMonthData}
           setShowMonthPicker={setIsPickerOpen}

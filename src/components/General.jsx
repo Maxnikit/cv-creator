@@ -5,11 +5,11 @@ import Input from "./Input";
 function General() {
   const [isEditing, setIsEditing] = useState(false);
   const [formData, setFormData] = useState({
-    firstName: "John",
-    lastName: "Silver",
-    age: "33",
-    email: "johnsilv@email.com",
-    phone: "+1 123 456 7890",
+    firstName: "",
+    lastName: "",
+    age: "",
+    email: "",
+    phone: "",
   });
   const fullName = formData.firstName + " " + formData.lastName;
   const handleInputChange = (e) => {
@@ -33,38 +33,38 @@ function General() {
         <div className="inputNameFields">
           <Input
             type="text"
-            name="firstName"
+            name="First name"
             value={formData.firstName}
-            placeholder="First Name"
+            placeholder="John"
             onChange={handleInputChange}
           />{" "}
           <Input
             type="text"
-            name="lastName"
+            name="Last name"
             value={formData.lastName}
-            placeholder="Last Name"
+            placeholder="Silver"
             onChange={handleInputChange}
           />
         </div>
         <Input
-          type="text"
-          name="age"
+          type="number"
+          name="Age"
           value={formData.age}
-          placeholder="Age"
+          placeholder="33"
           onChange={handleInputChange}
         />
         <Input
           type="email"
-          name="email"
+          name="Email"
           value={formData.email}
-          placeholder="Email"
+          placeholder="johnsilv@email.com"
           onChange={handleInputChange}
         />
         <Input
           type="tel"
-          name="phone"
+          name="Phone"
           value={formData.phone}
-          placeholder="Phone"
+          placeholder="+1 123 456 7890"
           onChange={handleInputChange}
         />
 

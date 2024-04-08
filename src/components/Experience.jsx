@@ -1,25 +1,21 @@
+import { useState } from "react";
+import Button from "./Button";
+import Job from "./Job";
+
 function Experience() {
+  const [buttonVisible, setButtonVisible] = useState(true);
+  const [jobVisible, setJobVisible] = useState(false);
+  const [isEditing, setIsEditing] = useState(false);
+
+  const handleAddJob = () => {
+    setButtonVisible(false);
+    setJobVisible(true);
+  };
   return (
     <div className="experience">
       <h2>Experience</h2>
-      <p>
-        <strong>Job Title</strong>
-      </p>
-      <p>
-        <strong>Company Name</strong>
-      </p>
-      <p>
-        <strong>Company Location</strong>
-      </p>
-      <p>
-        <strong>Start Date</strong>
-      </p>
-      <p>
-        <strong>End Date</strong>
-      </p>
-      <p>
-        <strong>Description</strong>
-      </p>
+      {jobVisible && <Job />}
+      {buttonVisible && <Button text="Add Job" onClick={handleAddJob} />}
     </div>
   );
 }

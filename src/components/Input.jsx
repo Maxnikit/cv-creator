@@ -1,7 +1,7 @@
 import React from "react";
 
 function Input({ type, name, value, placeholder, onChange }) {
-  const labelTitle = name.charAt(0).toUpperCase() + name.slice(1) + ":";
+  const labelTitle = name + ":";
   return (
     <div className="input-container">
       <label htmlFor={name}>{labelTitle}</label>

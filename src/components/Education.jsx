@@ -6,10 +6,10 @@ import Example from "./Example";
 function Education() {
   const [isEditing, setIsEditing] = useState(false);
   const [formData, setFormData] = useState({
-    school: "Harward University",
-    city: "Boston, MA",
-    degree: "Bachelor's",
-    fullDate: "September 2020 - April 2024",
+    school: "",
+    city: "",
+    degree: "",
+    fullDate: "",
   });
   const [selectedDateStart, setSelectedDateStart] = useState({
     month: 9,
@@ -72,26 +72,27 @@ function Education() {
         <h2>Education</h2>
         <Input
           type="text"
-          name="school"
+          name="School"
           value={formData.school}
           placeholder="School"
           onChange={handleInputChange}
         />
         <Input
           type="text"
-          name="degree"
+          name="Degree"
           value={formData.degree}
           placeholder="Degree"
           onChange={handleInputChange}
         />
         <Input
           type="text"
-          name="city"
+          name="City"
           value={formData.city}
           placeholder="City"
           onChange={handleInputChange}
         />
         <Example
+          text="Start Date:"
           selectedMonthData={selectedDateStart}
           setSelectedMonthData={setSelectedDateStart}
         />
@@ -105,6 +106,7 @@ function Education() {
           <label htmlFor="checkbox">Up to current time</label>
           {!isChecked && (
             <Example
+              text="End Date:"
               selectedMonthData={selectedDateEnd}
               setSelectedMonthData={setSelectedDateEnd}
             />
