@@ -72,21 +72,24 @@ function Education() {
         <h2>Education</h2>
         <Input
           type="text"
-          name="School"
+          name="school"
+          label="School:"
           value={formData.school}
           placeholder="School"
           onChange={handleInputChange}
         />
         <Input
           type="text"
-          name="Degree"
+          name="degree"
+          label="Degree:"
           value={formData.degree}
           placeholder="Degree"
           onChange={handleInputChange}
         />
         <Input
           type="text"
-          name="City"
+          name="city"
+          label="City:"
           value={formData.city}
           placeholder="City"
           onChange={handleInputChange}

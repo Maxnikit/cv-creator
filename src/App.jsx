@@ -4,7 +4,7 @@ import General from "./components/General";
 import Education from "./components/Education";
 import Experience from "./components/Experience";
 import Footer from "./components/Footer";
-
+import "@fontsource/roboto/500.css";
 function App() {
   return (
     <>

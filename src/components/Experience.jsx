@@ -5,17 +5,19 @@ import Job from "./Job";
 function Experience() {
   const [buttonVisible, setButtonVisible] = useState(true);
   const [jobVisible, setJobVisible] = useState(false);
-  const [isEditing, setIsEditing] = useState(false);
 
   const handleAddJob = () => {
     setButtonVisible(false);
     setJobVisible(true);
   };
+  //TODO Вместо показа уже сделанного JOB нужно создавать новые компоненты
   return (
     <div className="experience">
       <h2>Experience</h2>
-      {jobVisible && <Job />}
-      {buttonVisible && <Button text="Add Job" onClick={handleAddJob} />}
+      {jobVisible && <Job setButtonVisible={setButtonVisible} />}
+      {buttonVisible && (
+        <Button type="button" text="Add Job" onClick={handleAddJob} />
+      )}
     </div>
   );
 }

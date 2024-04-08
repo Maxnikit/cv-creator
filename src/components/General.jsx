@@ -33,14 +33,16 @@ function General() {
         <div className="inputNameFields">
           <Input
             type="text"
-            name="First name"
+            name="firstName"
+            label="First name:"
             value={formData.firstName}
             placeholder="John"
             onChange={handleInputChange}
           />{" "}
           <Input
             type="text"
-            name="Last name"
+            name="lastName"
+            label="Last name:"
             value={formData.lastName}
             placeholder="Silver"
             onChange={handleInputChange}
@@ -48,21 +50,24 @@ function General() {
         </div>
         <Input
           type="number"
-          name="Age"
+          name="age"
+          label="Age:"
           value={formData.age}
           placeholder="33"
           onChange={handleInputChange}
         />
         <Input
           type="email"
-          name="Email"
+          name="email"
+          label="Email:"
           value={formData.email}
           placeholder="johnsilv@email.com"
           onChange={handleInputChange}
         />
         <Input
           type="tel"
-          name="Phone"
+          name="phone"
+          label="Phone:"
           value={formData.phone}
           placeholder="+1 123 456 7890"
           onChange={handleInputChange}
