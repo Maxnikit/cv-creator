@@ -5,12 +5,11 @@ import Education from "./components/Education";
 import Experience from "./components/Experience";
 import Footer from "./components/Footer";
 
-
 function App() {
   return (
     <>
       <Header />
-      <div className="main"
+      <div className="main">
         <General />
         <Education />
         <Experience />
