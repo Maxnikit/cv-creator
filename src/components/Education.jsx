@@ -70,79 +70,91 @@ function Education() {
     // TODO: logic to save changes
     setIsEditing(false);
   };
-  if (isEditing) {
-    return (
-      <div className="education">
-        <h2>Education</h2>
-        <Input
-          type="text"
-          name="school"
-          label="School:"
-          value={formData.school}
-          placeholder="School"
-          onChange={handleInputChange}
-          required={true}
-        />
-        <Input
-          type="text"
-          name="degree"
-          label="Degree:"
-          value={formData.degree}
-          placeholder="Degree"
-          onChange={handleInputChange}
-          required={true}
-        />
-        <Input
-          type="text"
-          name="city"
-          label="City:"
-          value={formData.city}
-          placeholder="City"
-          onChange={handleInputChange}
-          required={true}
-        />
-        <Example
-          text="Start Date:"
-          selectedMonthData={selectedDateStart}
-          setSelectedMonthData={setSelectedDateStart}
-        />
-        <div className="checkboxContainer">
-          <input
-            type="checkbox"
-            onChange={handleCheckboxChange}
-            checked={isChecked}
-            id="checkbox"
-          />
-          <label htmlFor="checkbox">Up to current time</label>
-        </div>
-        {!isChecked && (
-          <Example
-            text="End Date:"
-            selectedMonthData={selectedDateEnd}
-            setSelectedMonthData={setSelectedDateEnd}
-          />
-        )}
 
-        <Button text="Confirm" onClick={saveChanges} />
-      </div>
-    );
-  }
   return (
     <div className="education">
-      <h2>Education</h2>
-      <p className="outputContainer">
-        <strong>School:</strong> {formData.school}
-      </p>
-      <p className="outputContainer">
-        <strong>Degree:</strong> {formData.degree}
-      </p>{" "}
-      <p className="outputContainer">
-        <strong>City:</strong> {formData.city}
-      </p>
-      <p className="outputContainer">
-        <strong>Date:</strong> {formData.fullDate}
-      </p>
-      <Button text="Edit" onClick={toggleEdit} />
+      <Accordion>
+        <AccordionSummary
+          expandIcon={<ExpandMoreIcon />}
+          aria-controls="panel1-content"
+          id="panel1-header"
+        >
+          <h2>Education</h2>
+        </AccordionSummary>
+        <AccordionDetails>
+          {isEditing && (
+            <>
+              <Input
+                type="text"
+                name="school"
+                label="School:"
+                value={formData.school}
+                placeholder="School"
+                onChange={handleInputChange}
+                required={true}
+              />
+              <Input
+                type="text"
+                name="degree"
+                label="Degree:"
+                value={formData.degree}
+                placeholder="Degree"
+                onChange={handleInputChange}
+                required={true}
+              />
+              <Input
+                type="text"
+                name="city"
+                label="City:"
+                value={formData.city}
+                placeholder="City"
+                onChange={handleInputChange}
+                required={true}
+              />
+              <Example
+                text="Start Date:"
+                selectedMonthData={selectedDateStart}
+                setSelectedMonthData={setSelectedDateStart}
+              />
+              <div className="checkboxContainer">
+                <input
+                  type="checkbox"
+                  onChange={handleCheckboxChange}
+                  checked={isChecked}
+                  id="checkbox"
+                />
+                <label htmlFor="checkbox">Up to current time</label>
+              </div>
+              {!isChecked && (
+                <Example
+                  text="End Date:"
+                  selectedMonthData={selectedDateEnd}
+                  setSelectedMonthData={setSelectedDateEnd}
+                />
+              )}
+
+              <Button text="Confirm" onClick={saveChanges} />
+            </>
+          )}
+          {!isEditing && (
+            <>
+              <p className="outputContainer">
+                <strong>School:</strong> {formData.school}
+              </p>
+              <p className="outputContainer">
+                <strong>Degree:</strong> {formData.degree}
+              </p>
+              <p className="outputContainer">
+                <strong>City:</strong> {formData.city}
+              </p>
+              <p className="outputContainer">
+                <strong>Date:</strong> {formData.fullDate}
+              </p>
+              <Button text="Edit" onClick={toggleEdit} />
+            </>
+          )}
+        </AccordionDetails>
+      </Accordion>
     </div>
   );
 }
