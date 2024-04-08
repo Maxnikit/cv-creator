@@ -5,11 +5,11 @@ import Input from "./Input";
 function General() {
   const [isEditing, setIsEditing] = useState(false);
   const [formData, setFormData] = useState({
-    firstName: "",
-    lastName: "",
-    age: "",
-    email: "",
-    phone: "",
+    firstName: "John",
+    lastName: "Silver",
+    age: "33",
+    email: "johnsilv@email.com",
+    phone: "+1 123 456 7890",
   });
   const fullName = formData.firstName + " " + formData.lastName;
   const handleInputChange = (e) => {
@@ -67,6 +67,7 @@ function General() {
           placeholder="Phone"
           onChange={handleInputChange}
         />
+
         <Button onClick={saveChanges} text="Confirm" />
       </div>
     );
@@ -74,6 +75,9 @@ function General() {
   return (
     <div className="general">
       <h2>General</h2>
+      {/* <label htmlFor="fullName">Name</label>
+      <output name="fullName"> {fullName}</output> */}
+
       <p>
         <strong>Name:</strong> {fullName}
       </p>

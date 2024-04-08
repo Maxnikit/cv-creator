@@ -9,12 +9,16 @@ body {
 }
 .general > p {
   margin: 0;
-  height: 30px;
+  height: 50px;
+  display: flex;
+  flex-direction: column;
 }
-.input-field {
-  box-sizing: border-box;
-  height: 30px;
-  width: 100%;
+.input-container {
+  display: flex;
+  flex-direction: column;
+  /* box-sizing: border-box; */
+  height: 50px;
+  /* width: 100%; */
 }
 
 .inputNameFields {
