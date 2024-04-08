@@ -6,9 +6,11 @@ function Experience() {
   const [buttonVisible, setButtonVisible] = useState(true);
   const [jobVisible, setJobVisible] = useState(false);
 
+  let jobs = [];
   const handleAddJob = () => {
     setButtonVisible(false);
-    setJobVisible(true);
+    // addJobComponent();
+    jobs;
   };
   //TODO Вместо показа уже сделанного JOB нужно создавать новые компоненты
   return (

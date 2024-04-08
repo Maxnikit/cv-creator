@@ -1,5 +1,4 @@
-import React from "react";
-
+/* eslint-disable react/prop-types */
 function Input({ type, name, value, placeholder, onChange, label, required }) {
   return (
     <div className="input-container">

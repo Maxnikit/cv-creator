@@ -38,7 +38,8 @@ function General() {
             value={formData.firstName}
             placeholder="John"
             onChange={handleInputChange}
-          />{" "}
+            required={true}
+          />
           <Input
             type="text"
             name="lastName"
@@ -46,6 +47,7 @@ function General() {
             value={formData.lastName}
             placeholder="Silver"
             onChange={handleInputChange}
+            required={false}
           />
         </div>
         <Input
@@ -55,6 +57,7 @@ function General() {
           value={formData.age}
           placeholder="33"
           onChange={handleInputChange}
+          required={true}
         />
         <Input
           type="email"
@@ -63,6 +66,7 @@ function General() {
           value={formData.email}
           placeholder="johnsilv@email.com"
           onChange={handleInputChange}
+          required={true}
         />
         <Input
           type="tel"
@@ -71,6 +75,7 @@ function General() {
           value={formData.phone}
           placeholder="+1 123 456 7890"
           onChange={handleInputChange}
+          required={true}
         />
 
         <Button onClick={saveChanges} text="Confirm" />
@@ -80,9 +85,6 @@ function General() {
   return (
     <div className="general">
       <h2>General</h2>
-      {/* <label htmlFor="fullName">Name</label>
-      <output name="fullName"> {fullName}</output> */}
-
       <p className="outputContainer">
         <strong>Name:</strong> {fullName}
       </p>

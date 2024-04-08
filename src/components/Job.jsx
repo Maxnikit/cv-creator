@@ -6,7 +6,7 @@ import Accordion from "@mui/material/Accordion";
 import AccordionDetails from "@mui/material/AccordionDetails";
 import AccordionSummary from "@mui/material/AccordionSummary";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
-
+import PropTypes from "prop-types";
 function Job({ setButtonVisible }) {
   const [isEditing, setIsEditing] = useState(true);
   const [formData, setFormData] = useState({
@@ -26,8 +26,8 @@ function Job({ setButtonVisible }) {
     year: 2024,
     monthName: "",
   });
-  let startDate;
-  let endDate;
+  //   let startDate;
+  //   let endDate;
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
@@ -80,6 +80,7 @@ function Job({ setButtonVisible }) {
             placeholder={"Google"}
             value={formData.companyName}
             onChange={handleInputChange}
+            required={true}
           />
           <Input
             type="text"
@@ -88,6 +89,7 @@ function Job({ setButtonVisible }) {
             placeholder={"Mountain View, CA"}
             value={formData.companyLocation}
             onChange={handleInputChange}
+            required={false}
           />
           <Example
             text="Start date:"
@@ -133,11 +135,13 @@ function Job({ setButtonVisible }) {
           <p>
             <strong>Description:</strong> {formData.description}
           </p>
-          <Button text="Edit" onClick={toggleEdit} />
+          <Button type="button" text="Edit" onClick={toggleEdit} />
         </AccordionDetails>
       </Accordion>
     </div>
   );
 }
-
+Job.propTypes = {
+  setButtonVisible: PropTypes.func,
+};
 export default Job;

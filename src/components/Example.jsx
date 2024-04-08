@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { MonthPicker, MonthInput } from "react-lite-month-picker";
+import PropTypes from "prop-types";
 
 function Example({ selectedMonthData, setSelectedMonthData, text }) {
   const [isPickerOpen, setIsPickerOpen] = useState(false);
@@ -24,5 +25,9 @@ function Example({ selectedMonthData, setSelectedMonthData, text }) {
     </>
   );
 }
-
+Example.propTypes = {
+  selectedMonthData: PropTypes.object,
+  setSelectedMonthData: PropTypes.func,
+  text: PropTypes.string,
+};
 export default Example;

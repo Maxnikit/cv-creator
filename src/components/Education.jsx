@@ -77,6 +77,7 @@ function Education() {
           value={formData.school}
           placeholder="School"
           onChange={handleInputChange}
+          required={true}
         />
         <Input
           type="text"
@@ -85,6 +86,7 @@ function Education() {
           value={formData.degree}
           placeholder="Degree"
           onChange={handleInputChange}
+          required={true}
         />
         <Input
           type="text"
@@ -93,6 +95,7 @@ function Education() {
           value={formData.city}
           placeholder="City"
           onChange={handleInputChange}
+          required={true}
         />
         <Example
           text="Start Date:"
