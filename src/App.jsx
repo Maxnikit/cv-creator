@@ -7,7 +7,7 @@ import Footer from "./components/Footer";
 import "@fontsource/roboto/500.css";
 import { LocalizationProvider } from "@mui/x-date-pickers";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
-
+// TODO: переписать компоненты. Логика и стейты должны быть в APP, а компоненты меньше
 function App() {
   return (
     <LocalizationProvider dateAdapter={AdapterDayjs}>
