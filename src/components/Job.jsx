@@ -7,7 +7,7 @@ import AccordionDetails from "@mui/material/AccordionDetails";
 import AccordionSummary from "@mui/material/AccordionSummary";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import PropTypes from "prop-types";
-function Job({ setButtonVisible }) {
+function Job({ setButtonVisible, removeJob, key }) {
   const [isEditing, setIsEditing] = useState(true);
   const [formData, setFormData] = useState({
     title: "",
@@ -54,6 +54,11 @@ function Job({ setButtonVisible }) {
   const handleSubmit = () => {
     saveChanges();
     setButtonVisible(true);
+  };
+  const handleCancel = () => {
+    setIsEditing(false);
+    setButtonVisible(true);
+    removeJob(key);
   };
   const saveChanges = () => {
     computeFullDate();
@@ -108,7 +113,7 @@ function Job({ setButtonVisible }) {
             onChange={handleInputChange}
           />
           <Button type="submit" text="Confirm" />
-          <Button type="button" text="Cancel" onClick={toggleEdit} />
+          <Button type="button" text="Cancel" onClick={handleCancel} />
         </div>
       </form>
     );

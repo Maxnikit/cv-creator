@@ -15,10 +15,16 @@ function Experience() {
     // addJobComponent();
     setJobs([
       ...jobs,
-      <Job key={jobs.length} setButtonVisible={setButtonVisible} />,
+      <Job
+        key={jobs.length}
+        setButtonVisible={setButtonVisible}
+        removeJob={removeJob}
+      />,
     ]);
   };
-
+  const removeJob = (indexToRemove) => {
+    setJobs(jobs.filter((_, index) => index !== indexToRemove));
+  };
   // TODO Пофиксить кнопку Cancel
   return (
     <div className="experience">
