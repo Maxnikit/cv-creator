@@ -28,7 +28,7 @@ function Experience() {
   // TODO Пофиксить кнопку Cancel
   return (
     <div className="experience">
-      <Accordion>
+      <Accordion className="accordion">
         <AccordionSummary
           expandIcon={<ExpandMoreIcon />}
           aria-controls="panel1-content"

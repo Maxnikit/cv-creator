@@ -7,6 +7,7 @@ import Footer from "./components/Footer";
 import "@fontsource/roboto/500.css";
 import { LocalizationProvider } from "@mui/x-date-pickers";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
+
 function App() {
   return (
     <LocalizationProvider dateAdapter={AdapterDayjs}>

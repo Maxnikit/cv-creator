@@ -1,11 +1,12 @@
 import { useState } from "react";
 import Button from "./Button";
 import Input from "./Input";
-import Example from "./Example";
+
 import Accordion from "@mui/material/Accordion";
 import AccordionDetails from "@mui/material/AccordionDetails";
 import AccordionSummary from "@mui/material/AccordionSummary";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 
 function Education() {
   const [isEditing, setIsEditing] = useState(false);
@@ -15,48 +16,43 @@ function Education() {
     degree: "",
     fullDate: "",
   });
-  const [selectedDateStart, setSelectedDateStart] = useState({
-    month: 9,
-    year: 2020,
-    monthName: "",
-  });
-  const [selectedDateEnd, setSelectedDateEnd] = useState({
-    month: 4,
-    year: 2024,
-    monthName: "",
-  });
+  const [selectedDateStart, setSelectedDateStart] = useState(null);
+  const [selectedDateEnd, setSelectedDateEnd] = useState(null);
   const [isChecked, setIsChecked] = useState(true);
   const handleCheckboxChange = () => {
     setIsChecked(!isChecked);
   };
+  const getMonthByIndex = (index) => {
+    return new Date(2000, index).toLocaleString("en", {
+      month: "long",
+    });
+  };
   function computeFullDate() {
-    if (selectedDateStart.monthName && isChecked) {
+    if (selectedDateStart && selectedDateEnd) {
+      const startMonth = getMonthByIndex(selectedDateStart.$M);
+      const endMonth = getMonthByIndex(selectedDateEnd.$M);
+
       setFormData({
         ...formData,
         fullDate:
-          selectedDateStart.monthName +
+          startMonth +
           " " +
-          selectedDateStart.year +
+          selectedDateStart.$y +
           " - " +
-          "Present",
+          endMonth +
+          " " +
+          selectedDateEnd.$y,
       });
-    } else if (selectedDateStart.monthName && selectedDateEnd.monthName) {
-      console.log("IF TRIGGERED");
+      console.log(formData.fullDate);
+    } else if (selectedDateEnd === null) {
+      const startMonth = getMonthByIndex(selectedDateStart.$M);
       setFormData({
         ...formData,
-        fullDate:
-          selectedDateStart.monthName +
-          " " +
-          selectedDateStart.year +
-          " - " +
-          selectedDateEnd.monthName +
-          " " +
-          selectedDateEnd.year,
+        fullDate: startMonth + " " + selectedDateStart.$y + " - " + "Present",
       });
+      console.log(formData.fullDate);
     }
   }
-  console.log(selectedDateStart);
-  console.log(selectedDateEnd);
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
@@ -73,7 +69,7 @@ function Education() {
 
   return (
     <div className="education">
-      <Accordion>
+      <Accordion className="accordion">
         <AccordionSummary
           expandIcon={<ExpandMoreIcon />}
           aria-controls="panel1-content"
@@ -111,10 +107,11 @@ function Education() {
                 onChange={handleInputChange}
                 required={true}
               />
-              <Example
-                text="Start Date:"
-                selectedMonthData={selectedDateStart}
-                setSelectedMonthData={setSelectedDateStart}
+              <div>Start date:</div>
+              <DatePicker
+                value={selectedDateStart}
+                onChange={(newValue) => setSelectedDateStart(newValue)}
+                views={["year", "month"]}
               />
               <div className="checkboxContainer">
                 <input
@@ -126,11 +123,14 @@ function Education() {
                 <label htmlFor="checkbox">Up to current time</label>
               </div>
               {!isChecked && (
-                <Example
-                  text="End Date:"
-                  selectedMonthData={selectedDateEnd}
-                  setSelectedMonthData={setSelectedDateEnd}
-                />
+                <>
+                  <div>End date:</div>
+                  <DatePicker
+                    value={selectedDateEnd}
+                    onChange={(newValue) => setSelectedDateEnd(newValue)}
+                    views={["year", "month"]}
+                  />
+                </>
               )}
 
               <Button text="Confirm" onClick={saveChanges} />

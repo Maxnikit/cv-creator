@@ -19,16 +19,8 @@ function Job({ setButtonVisible, removeJob, key }) {
     fullDate: "",
     description: "",
   });
-  const [selectedDateStart, setSelectedDateStart] = useState({
-    month: 9,
-    year: 2020,
-    monthName: "",
-  });
-  const [selectedDateEnd, setSelectedDateEnd] = useState({
-    month: 4,
-    year: 2024,
-    monthName: "",
-  });
+  const [selectedDateStart, setSelectedDateStart] = useState(null);
+  const [selectedDateEnd, setSelectedDateEnd] = useState(null);
   //   let startDate;
   //   let endDate;
   const handleInputChange = (e) => {
@@ -38,20 +30,28 @@ function Job({ setButtonVisible, removeJob, key }) {
   const toggleEdit = () => {
     setIsEditing(!isEditing);
   };
+  const getMonthByIndex = (index) => {
+    return new Date(2000, index).toLocaleString("en", {
+      month: "long",
+    });
+  };
   function computeFullDate() {
-    if (selectedDateStart.monthName && selectedDateEnd.monthName) {
-      console.log("IF TRIGGERED");
+    if (selectedDateStart && selectedDateEnd) {
+      const startMonth = getMonthByIndex(selectedDateStart.$M);
+      const endMonth = getMonthByIndex(selectedDateEnd.$M);
+
       setFormData({
         ...formData,
         fullDate:
-          selectedDateStart.monthName +
+          startMonth +
           " " +
-          selectedDateStart.year +
+          selectedDateStart.$y +
           " - " +
-          selectedDateEnd.monthName +
+          endMonth +
           " " +
-          selectedDateEnd.year,
+          selectedDateEnd.$y,
       });
+      console.log(formData.fullDate);
     }
   }
   const handleSubmit = () => {
@@ -99,39 +99,42 @@ function Job({ setButtonVisible, removeJob, key }) {
             onChange={handleInputChange}
             required={false}
           />
-          <Example
-            text="Start date:"
-            selectedMonthData={selectedDateStart}
-            setSelectedMonthData={setSelectedDateStart}
+          <div>Start date:</div>
+          <DatePicker
+            value={selectedDateStart}
+            onChange={(newValue) => setSelectedDateStart(newValue)}
+            views={["year", "month"]}
           />
-          <Example
-            text="End date:"
-            selectedMonthData={selectedDateEnd}
-            setSelectedMonthData={setSelectedDateEnd}
+          <div>End date:</div>
+          <DatePicker
+            value={selectedDateEnd}
+            onChange={(newValue) => setSelectedDateEnd(newValue)}
+            views={["year", "month"]}
           />
-          <span>Start date:</span>
-          <DatePicker views={["year", "month"]} />
-          <label htmlFor="description">Description:</label>
+          <div>Description:</div>
           <textarea
             name="description"
             value={formData.description}
             onChange={handleInputChange}
           />
-          <Button type="submit" text="Confirm" />
-          <Button type="button" text="Cancel" onClick={handleCancel} />
+          <div className="buttons">
+            {" "}
+            <Button type="submit" text="Confirm" />
+            <Button type="button" text="Cancel" onClick={handleCancel} />
+          </div>
         </div>
       </form>
     );
   }
   return (
     <div className="job">
-      <Accordion>
+      <Accordion className="accordion">
         <AccordionSummary
           expandIcon={<ExpandMoreIcon />}
           aria-controls="panel1-content"
-          id="panel1-header"
+          className="job-header"
         >
-          <h3>{formData.title}</h3>
+          <h3>{formData.companyName}</h3> <h4>{formData.title}</h4>
         </AccordionSummary>
         <AccordionDetails>
           <p>
