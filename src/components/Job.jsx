@@ -50,7 +50,6 @@ function Job({ setButtonVisible, removeJob, key }) {
           " " +
           selectedDateEnd.$y,
       });
-      console.log(formData.fullDate);
     }
   }
   const handleSubmit = () => {
@@ -69,7 +68,7 @@ function Job({ setButtonVisible, removeJob, key }) {
   };
   if (isEditing) {
     return (
-      <form onSubmit={handleSubmit}>
+      <form className="card-container" onSubmit={handleSubmit}>
         <div className="job">
           <Input
             type="text"
@@ -96,7 +95,7 @@ function Job({ setButtonVisible, removeJob, key }) {
             placeholder={"Mountain View, CA"}
             value={formData.companyLocation}
             onChange={handleInputChange}
-            required={false}
+            required={true}
           />
           <div>Start date:</div>
           <DatePicker
@@ -136,19 +135,21 @@ function Job({ setButtonVisible, removeJob, key }) {
           <h3>{formData.companyName}</h3> <h4>{formData.title}</h4>
         </AccordionSummary>
         <AccordionDetails>
-          <p>
-            <strong>Company Name:</strong> {formData.companyName}
-          </p>
-          <p>
-            <strong>Company Location:</strong> {formData.companyLocation}
-          </p>
-          <p>
-            <strong>Date:</strong> {formData.fullDate}
-          </p>
-          <p>
-            <strong>Description:</strong> {formData.description}
-          </p>
-          <Button type="button" text="Edit" onClick={toggleEdit} />
+          <div className="card-container">
+            <p>
+              <strong>Company Name:</strong> {formData.companyName}
+            </p>
+            <p>
+              <strong>Company Location:</strong> {formData.companyLocation}
+            </p>
+            <p>
+              <strong>Date:</strong> {formData.fullDate}
+            </p>
+            <p>
+              <strong>Description:</strong> {formData.description}
+            </p>
+            <Button type="button" text="Edit" onClick={toggleEdit} />
+          </div>
         </AccordionDetails>
       </Accordion>
     </div>

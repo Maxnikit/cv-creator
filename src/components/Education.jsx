@@ -44,7 +44,7 @@ function Education() {
           selectedDateEnd.$y,
       });
       console.log(formData.fullDate);
-    } else if (selectedDateEnd === null) {
+    } else if (selectedDateStart && selectedDateEnd === null) {
       const startMonth = getMonthByIndex(selectedDateStart.$M);
       setFormData({
         ...formData,
@@ -60,11 +60,14 @@ function Education() {
   const toggleEdit = () => {
     setIsEditing(!isEditing);
   };
-
+  const handleSubmit = () => {
+    saveChanges();
+  };
   const saveChanges = () => {
     computeFullDate();
     // TODO: logic to save changes
     setIsEditing(false);
+    console.log("done");
   };
 
   return (
@@ -79,7 +82,7 @@ function Education() {
         </AccordionSummary>
         <AccordionDetails>
           {isEditing && (
-            <>
+            <form className="card-container" onSubmit={handleSubmit}>
               <Input
                 type="text"
                 name="school"
@@ -133,11 +136,11 @@ function Education() {
                 </>
               )}
 
-              <Button text="Confirm" onClick={saveChanges} />
-            </>
+              <Button type="Submit" text="Confirm" />
+            </form>
           )}
           {!isEditing && (
-            <>
+            <div className="card-container">
               <p className="outputContainer">
                 <strong>School:</strong> {formData.school}
               </p>
@@ -151,7 +154,7 @@ function Education() {
                 <strong>Date:</strong> {formData.fullDate}
               </p>
               <Button text="Edit" onClick={toggleEdit} />
-            </>
+            </div>
           )}
         </AccordionDetails>
       </Accordion>

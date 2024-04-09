@@ -23,7 +23,9 @@ function General() {
   const toggleEdit = () => {
     setIsEditing(!isEditing);
   };
-
+  const handleSubmit = () => {
+    saveChanges();
+  };
   const saveChanges = () => {
     // TODO: logic to save changes
     setIsEditing(false);
@@ -41,7 +43,7 @@ function General() {
         </AccordionSummary>
         <AccordionDetails>
           {isEditing && (
-            <>
+            <form className="card-container" onSubmit={handleSubmit}>
               <div className="inputNameFields">
                 <Input
                   type="text"
@@ -90,11 +92,11 @@ function General() {
                 required={true}
               />
 
-              <Button onClick={saveChanges} text="Confirm" />
-            </>
+              <Button type="Submit" text="Confirm" />
+            </form>
           )}
           {!isEditing && (
-            <>
+            <div className="card-container">
               <p className="outputContainer">
                 <strong>Name:</strong> {fullName}
               </p>
@@ -108,7 +110,7 @@ function General() {
                 <strong>Phone:</strong> {formData.phone}
               </p>
               <Button onClick={toggleEdit} text="Edit" />
-            </>
+            </div>
           )}
         </AccordionDetails>
       </Accordion>
