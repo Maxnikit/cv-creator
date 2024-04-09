@@ -7,6 +7,9 @@ import AccordionDetails from "@mui/material/AccordionDetails";
 import AccordionSummary from "@mui/material/AccordionSummary";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import PropTypes from "prop-types";
+
+import { DatePicker } from "@mui/x-date-pickers/DatePicker";
+// TODO возможно, заменить DatePicker на вариант от materialUI. потому что текущий работает как Submit при валидации. Но от Material UI медленный. Найти способ ускорить
 function Job({ setButtonVisible, removeJob, key }) {
   const [isEditing, setIsEditing] = useState(true);
   const [formData, setFormData] = useState({
@@ -106,6 +109,8 @@ function Job({ setButtonVisible, removeJob, key }) {
             selectedMonthData={selectedDateEnd}
             setSelectedMonthData={setSelectedDateEnd}
           />
+          <span>Start date:</span>
+          <DatePicker views={["year", "month"]} />
           <label htmlFor="description">Description:</label>
           <textarea
             name="description"
