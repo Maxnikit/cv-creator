@@ -33,8 +33,6 @@ function App() {
     dateStart: null,
     dateEnd: null,
   });
-  // const [dateStart, setDateStart] = useState(null);
-  // const [dateEnd, setDateEnd] = useState(null);
   const handleEducationInfoChange = (e) => {
     const { name, value } = e.target;
     setEducationData({ ...educationData, [name]: value });
@@ -48,7 +46,7 @@ function App() {
       month: "long",
     });
   };
-
+  // TODO переделать функцию
   // function computeFullDate() {
   //   if (selectedDateStart && selectedDateEnd) {
   //     const startMonth = getMonthByIndex(selectedDateStart.$M);
@@ -76,6 +74,8 @@ function App() {
   //   }
   // }
 
+  // Experience
+  // TODO переделать компонент experience как остальные
   return (
     <LocalizationProvider dateAdapter={AdapterDayjs}>
       <>
