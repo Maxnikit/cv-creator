@@ -19,11 +19,63 @@ function App() {
     email: "",
     phone: "",
   });
-  const fullName = generalData.firstName + " " + generalData.lastName;
   const handleGeneralInfoChange = (e) => {
     const { name, value } = e.target;
     setGeneralData({ ...generalData, [name]: value });
   };
+  const fullName = generalData.firstName + " " + generalData.lastName;
+
+  // Education section
+  const [educationData, setEducationData] = useState({
+    school: "",
+    city: "",
+    degree: "",
+    dateStart: null,
+    dateEnd: null,
+  });
+  // const [dateStart, setDateStart] = useState(null);
+  // const [dateEnd, setDateEnd] = useState(null);
+  const handleEducationInfoChange = (e) => {
+    const { name, value } = e.target;
+    setEducationData({ ...educationData, [name]: value });
+  };
+  const handleEducationDateChange = (field) => (date) => {
+    console.log(educationData);
+    setEducationData({ ...educationData, [field]: date });
+  };
+  const getMonthByIndex = (index) => {
+    return new Date(2000, index).toLocaleString("en", {
+      month: "long",
+    });
+  };
+
+  // function computeFullDate() {
+  //   if (selectedDateStart && selectedDateEnd) {
+  //     const startMonth = getMonthByIndex(selectedDateStart.$M);
+  //     const endMonth = getMonthByIndex(selectedDateEnd.$M);
+
+  //     setFormData({
+  //       ...formData,
+  //       fullDate:
+  //         startMonth +
+  //         " " +
+  //         selectedDateStart.$y +
+  //         " - " +
+  //         endMonth +
+  //         " " +
+  //         selectedDateEnd.$y,
+  //     });
+  //     console.log(formData.fullDate);
+  //   } else if (selectedDateStart && selectedDateEnd === null) {
+  //     const startMonth = getMonthByIndex(selectedDateStart.$M);
+  //     setFormData({
+  //       ...formData,
+  //       fullDate: startMonth + " " + selectedDateStart.$y + " - " + "Present",
+  //     });
+  //     console.log(formData.fullDate);
+  //   }
+  // }
+
   return (
     <LocalizationProvider dateAdapter={AdapterDayjs}>
       <>
@@ -31,7 +83,11 @@ function App() {
         {fullName}
         <div className="main">
           <General formData={generalData} onChange={handleGeneralInfoChange} />
-          <Education />
+          <Education
+            formData={educationData}
+            onChange={handleEducationInfoChange}
+            onDateChange={handleEducationDateChange}
+          />
           <Experience />
         </div>
         <div className="preview">

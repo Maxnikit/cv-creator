@@ -22,7 +22,7 @@ function Job({ setButtonVisible, removeJob, key }) {
   const [selectedDateEnd, setSelectedDateEnd] = useState(null);
   //   let startDate;
   //   let endDate;
-  const handleInputChange = (e) => {
+  const onChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
   };
@@ -76,7 +76,7 @@ function Job({ setButtonVisible, removeJob, key }) {
             label="Job title:"
             placeholder="Frontend Developer"
             value={formData.title}
-            onChange={handleInputChange}
+            onChange={onChange}
             required={true}
           />
           <Input
@@ -85,7 +85,7 @@ function Job({ setButtonVisible, removeJob, key }) {
             label="Company name:"
             placeholder={"Google"}
             value={formData.companyName}
-            onChange={handleInputChange}
+            onChange={onChange}
             required={true}
           />
           <Input
@@ -94,7 +94,7 @@ function Job({ setButtonVisible, removeJob, key }) {
             label="Company location:"
             placeholder={"Mountain View, CA"}
             value={formData.companyLocation}
-            onChange={handleInputChange}
+            onChange={onChange}
             required={true}
           />
           <div>Start date:</div>
@@ -113,7 +113,7 @@ function Job({ setButtonVisible, removeJob, key }) {
           <textarea
             name="description"
             value={formData.description}
-            onChange={handleInputChange}
+            onChange={onChange}
           />
           <div className="buttons">
             {" "}
