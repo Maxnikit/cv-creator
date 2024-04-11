@@ -1,6 +1,6 @@
 import Job from "./Job";
 
-function Experience({ formData, onChange, onDateChange }) {
+function Experience({ formData, onChange }) {
   return (
     <div className="experience section">
       <h2>Experience</h2>
@@ -10,7 +10,6 @@ function Experience({ formData, onChange, onDateChange }) {
             key={job.id}
             formData={job}
             onChange={(field, value) => onChange(job.id, field, value)}
-            onDateChange={onDateChange}
           />
         ))}
       </div>

@@ -19,9 +19,8 @@ function App() {
     email: "",
     phone: "",
   });
-  const handleGeneralInfoChange = (e) => {
-    const { name, value } = e.target;
-    setGeneralData({ ...generalData, [name]: value });
+  const handleGeneralInfoChange = (field, value) => {
+    setGeneralData({ ...generalData, [field]: value });
   };
   const fullName = generalData.firstName + " " + generalData.lastName;
 
@@ -33,11 +32,10 @@ function App() {
     dateStart: null,
     dateEnd: null,
   });
-  const handleEducationInfoChange = (e) => {
-    const { name, value } = e.target;
-    setEducationData({ ...educationData, [name]: value });
+  const handleEducationInfoChange = (field, value) => {
+    setEducationData({ ...educationData, [field]: value });
   };
-  const handleEducationDateChange = (field) => (date) => {
+  const handleEducationDateChange = (field, date) => {
     setEducationData({ ...educationData, [field]: date });
   };
   const getMonthByIndex = (index) => {
@@ -104,16 +102,7 @@ function App() {
       })
     );
   };
-  const handleExperienceDateChange = (jobId, field, value) => {
-    setExperienceData(
-      experienceData.map((job) => {
-        if (job.id === jobId) {
-          return { ...job, [field]: value };
-        }
-        return job;
-      })
-    );
-  };
+
   // TODO переделать компонент experience как остальные
   return (
     <LocalizationProvider dateAdapter={AdapterDayjs}>
@@ -125,12 +114,10 @@ function App() {
           <Education
             formData={educationData}
             onChange={handleEducationInfoChange}
-            onDateChange={handleEducationDateChange}
           />
           <Experience
             formData={experienceData}
             onChange={handleExperienceInfoChange}
-            onDateChange={handleExperienceDateChange}
           />
         </div>
         <div className="preview">

@@ -11,7 +11,7 @@ function General({ formData, onChange }) {
           label="First name:"
           value={formData.firstName}
           placeholder="John"
-          onChange={onChange}
+          onChange={(e) => onChange("firstName", e.target.value)}
           required={true}
         />
         <Input
@@ -20,7 +20,7 @@ function General({ formData, onChange }) {
           label="Last name:"
           value={formData.lastName}
           placeholder="Silver"
-          onChange={onChange}
+          onChange={(e) => onChange("lastName", e.target.value)}
           required={false}
         />
       </div>
@@ -30,7 +30,7 @@ function General({ formData, onChange }) {
         label="Age:"
         value={formData.age}
         placeholder="33"
-        onChange={onChange}
+        onChange={(e) => onChange("age", e.target.value)}
         required={true}
       />
       <Input
@@ -39,7 +39,7 @@ function General({ formData, onChange }) {
         label="Email:"
         value={formData.email}
         placeholder="johnsilv@email.com"
-        onChange={onChange}
+        onChange={(e) => onChange("email", e.target.value)}
         required={true}
       />
       <Input
@@ -48,7 +48,7 @@ function General({ formData, onChange }) {
         label="Phone:"
         value={formData.phone}
         placeholder="+1 123 456 7890"
-        onChange={onChange}
+        onChange={(e) => onChange("phone", e.target.value)}
         required={true}
       />
     </div>
