@@ -1,33 +1,36 @@
-/* Color Variables */
 :root {
-  --primary: #2196f3;
-  --primary-light: #bbdefb;
-  --primary-dark: #1e88e5;
-  --secondary: #4caf50;
-  --secondary-light: #8bc34a;
-  --secondary-dark: #43a047;
-  --accent: #ff9800;
-  --accent-light: #ffc107;
-  --accent-dark: #ff5722;
-  --surface: #ffffff;
-  --surface-dark: #f5f5f5;
-  --surface-light: #fafafa;
-  --background: #242424;
-  --background-dark: #1e1e1e;
-  --background-light: #303030;
-  --text: #212121;
-  --text-inverse: #ffffff;
-  --error: #f44336;
-  --warning: #ffc107;
-  --success: #4caf50;
-  --info: #2196f3;
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: light dark;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-/* Example usage: background-color: var(--primary); */
-
+:root {
+  --text: #0c0914;
+  --background: #f7f6fc;
+  --text-inverse: var(var(--background));
+  --primary: #6545c5;
+  --secondary: #a18ce2;
+  --accent: #7c5dde;
+}
+/* TODO научиться определять текущую тему и менять её, а пока оставлю только светлую */
+/* :root[data-theme="dark"] {
+  --text: #edeaf6;
+  --background: #030308;
+  --primary: #5b3bba;
+  --secondary: #321d72;
+  --accent: #3f21a1;
+} */
 body {
   display: flex;
   flex-direction: column;
+  color: var(--text);
   background-color: var(--background);
 }
 #root {
@@ -42,10 +45,10 @@ body {
   margin: 20px;
   box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.2);
 }
-.general,
-.education,
-.experience {
+.section {W
   width: 500px;
+  color: var(--background);
+  background-color: var(--primary);
 }
 .general > .accordion,
 .education > .accordion,

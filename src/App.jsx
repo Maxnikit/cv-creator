@@ -38,7 +38,6 @@ function App() {
     setEducationData({ ...educationData, [name]: value });
   };
   const handleEducationDateChange = (field) => (date) => {
-    console.log(educationData);
     setEducationData({ ...educationData, [field]: date });
   };
   const getMonthByIndex = (index) => {
@@ -75,6 +74,46 @@ function App() {
   // }
 
   // Experience
+  const [experienceData, setExperienceData] = useState([
+    {
+      id: 0, // Unique identifier for each job
+      title: "",
+      companyName: "",
+      companyLocation: "",
+      dateStart: null,
+      dateEnd: null,
+      description: "",
+    },
+    {
+      id: 1, // Unique identifier for each job
+      title: "",
+      companyName: "",
+      companyLocation: "",
+      dateStart: null,
+      dateEnd: null,
+      description: "",
+    },
+  ]);
+  const handleExperienceInfoChange = (jobId, field, value) => {
+    setExperienceData(
+      experienceData.map((job) => {
+        if (job.id === jobId) {
+          return { ...job, [field]: value };
+        }
+        return job;
+      })
+    );
+  };
+  const handleExperienceDateChange = (jobId, field, value) => {
+    setExperienceData(
+      experienceData.map((job) => {
+        if (job.id === jobId) {
+          return { ...job, [field]: value };
+        }
+        return job;
+      })
+    );
+  };
   // TODO переделать компонент experience как остальные
   return (
     <LocalizationProvider dateAdapter={AdapterDayjs}>
@@ -88,7 +127,11 @@ function App() {
             onChange={handleEducationInfoChange}
             onDateChange={handleEducationDateChange}
           />
-          <Experience />
+          <Experience
+            formData={experienceData}
+            onChange={handleExperienceInfoChange}
+            onDateChange={handleExperienceDateChange}
+          />
         </div>
         <div className="preview">
           <Preview />

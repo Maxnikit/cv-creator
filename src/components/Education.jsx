@@ -5,19 +5,20 @@ import Input from "./Input";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 
 function Education({ formData, onChange, onDateChange }) {
+  const { school, degree, city, dateStart, dateEnd } = formData;
   const [isChecked, setIsChecked] = useState(true);
   const handleCheckboxChange = () => {
     setIsChecked(!isChecked);
   };
 
   return (
-    <div className="education">
+    <div className="education section">
       <h2>Education</h2>
       <Input
         type="text"
         name="school"
         label="School:"
-        value={formData.school}
+        value={school}
         placeholder="School"
         onChange={onChange}
         required={true}
@@ -26,7 +27,7 @@ function Education({ formData, onChange, onDateChange }) {
         type="text"
         name="degree"
         label="Degree:"
-        value={formData.degree}
+        value={degree}
         placeholder="Degree"
         onChange={onChange}
         required={true}
@@ -35,7 +36,7 @@ function Education({ formData, onChange, onDateChange }) {
         type="text"
         name="city"
         label="City:"
-        value={formData.city}
+        value={city}
         placeholder="City"
         onChange={onChange}
         required={true}
@@ -43,7 +44,7 @@ function Education({ formData, onChange, onDateChange }) {
       <div>Start date:</div>
       <DatePicker
         name="dateStart"
-        value={formData.dateStart}
+        value={dateStart}
         onChange={onDateChange("dateStart")}
         // onChange={(newValue) => setDateStart(newValue)}
         views={["year", "month"]}
@@ -61,7 +62,7 @@ function Education({ formData, onChange, onDateChange }) {
         <>
           <div>End date:</div>
           <DatePicker
-            value={formData.dateEnd}
+            value={dateEnd}
             onChange={onDateChange("dateEnd")}
             views={["year", "month"]}
           />

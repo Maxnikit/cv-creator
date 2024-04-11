@@ -2,7 +2,7 @@ import Input from "./Input";
 
 function General({ formData, onChange }) {
   return (
-    <div className="general">
+    <div className="general section">
       <h2>General</h2>
       <div className="inputNameFields">
         <Input
