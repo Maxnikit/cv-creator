@@ -1,4 +1,6 @@
 import "./App.css";
+import "@mantine/core/styles.css";
+import "@mantine/dates/styles.css";
 import Header from "./components/Header";
 import General from "./components/General";
 import Education from "./components/Education";
@@ -9,7 +11,11 @@ import "@fontsource/roboto/500.css";
 import { LocalizationProvider } from "@mui/x-date-pickers";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { useState } from "react";
-// TODO: переписать компоненты. Логика и стейты должны быть в APP, а компоненты меньше
+import { createTheme, MantineProvider } from "@mantine/core";
+
+const theme = createTheme({
+  /** Put your mantine theme override here */
+});
 function App() {
   // General section
   const [generalData, setGeneralData] = useState({
@@ -105,27 +111,32 @@ function App() {
 
   // TODO переделать компонент experience как остальные
   return (
-    <LocalizationProvider dateAdapter={AdapterDayjs}>
-      <>
-        <Header />
-        {fullName}
-        <div className="main">
-          <General formData={generalData} onChange={handleGeneralInfoChange} />
-          <Education
-            formData={educationData}
-            onChange={handleEducationInfoChange}
-          />
-          <Experience
-            formData={experienceData}
-            onChange={handleExperienceInfoChange}
-          />
-        </div>
-        <div className="preview">
-          <Preview />
-        </div>
-        <Footer />
-      </>
-    </LocalizationProvider>
+    <MantineProvider theme={theme}>
+      <LocalizationProvider dateAdapter={AdapterDayjs}>
+        <>
+          <Header />
+          {fullName}
+          <div className="main">
+            <General
+              formData={generalData}
+              onChange={handleGeneralInfoChange}
+            />
+            <Education
+              formData={educationData}
+              onChange={handleEducationInfoChange}
+            />
+            <Experience
+              formData={experienceData}
+              onChange={handleExperienceInfoChange}
+            />
+          </div>
+          <div className="preview">
+            <Preview />
+          </div>
+          <Footer />
+        </>
+      </LocalizationProvider>
+    </MantineProvider>
   );
 }
 

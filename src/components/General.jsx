@@ -1,17 +1,18 @@
 import { TextField } from "@mui/material";
+import { TextInput } from "@mantine/core";
+import classes from "./Textfield.module.css";
 function General({ formData, onChange }) {
   return (
     <div className="general section">
       <h2>General</h2>
       <div className="inputNameFields">
-        <TextField
+        <TextInput
           type="text"
           name="firstName"
           label="First name:"
           value={formData.firstName}
           placeholder="John"
           onChange={(e) => onChange("firstName", e.target.value)}
-          required={true}
         />
         <TextField
           type="text"
@@ -20,7 +21,6 @@ function General({ formData, onChange }) {
           value={formData.lastName}
           placeholder="Silver"
           onChange={(e) => onChange("lastName", e.target.value)}
-          required={false}
         />
       </div>
       <TextField
@@ -30,7 +30,6 @@ function General({ formData, onChange }) {
         value={formData.age}
         placeholder="33"
         onChange={(e) => onChange("age", e.target.value)}
-        required={true}
       />
       <TextField
         type="email"
@@ -39,7 +38,6 @@ function General({ formData, onChange }) {
         value={formData.email}
         placeholder="johnsilv@email.com"
         onChange={(e) => onChange("email", e.target.value)}
-        required={true}
       />
       <TextField
         type="tel"
@@ -48,7 +46,6 @@ function General({ formData, onChange }) {
         value={formData.phone}
         placeholder="+1 123 456 7890"
         onChange={(e) => onChange("phone", e.target.value)}
-        required={true}
       />
     </div>
   );

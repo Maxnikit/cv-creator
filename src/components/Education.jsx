@@ -20,7 +20,6 @@ function Education({ formData, onChange }) {
         value={school}
         placeholder="School"
         onChange={(e) => onChange("school", e.target.value)}
-        required={true}
       />
       <TextField
         type="text"
@@ -29,7 +28,6 @@ function Education({ formData, onChange }) {
         value={degree}
         placeholder="Degree"
         onChange={(e) => onChange("degree", e.target.value)}
-        required={true}
       />
       <TextField
         type="text"
@@ -38,7 +36,6 @@ function Education({ formData, onChange }) {
         value={city}
         placeholder="City"
         onChange={(e) => onChange("city", e.target.value)}
-        required={true}
       />
       <div>Start date:</div>
       <DatePicker
