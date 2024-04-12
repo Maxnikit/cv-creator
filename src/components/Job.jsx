@@ -1,6 +1,5 @@
-import { TextField } from "@mui/material";
-
-import { DatePicker } from "@mui/x-date-pickers/DatePicker";
+import { TextInput } from "@mantine/core";
+import { MonthPickerInput } from "@mantine/dates";
 function Job({ formData, onChange }) {
   // Destructure the jobData for easier access to properties
   const {
@@ -15,21 +14,21 @@ function Job({ formData, onChange }) {
 
   return (
     <div className="job" key={id}>
-      <TextField
+      <TextInput
         type="text"
         value={title}
         label="Job Title"
         placeholder="Frontend Developer"
         onChange={(e) => onChange("title", e.target.value)}
       />
-      <TextField
+      <TextInput
         type="text"
         value={companyName}
         placeholder="Google"
         label="Company Name"
         onChange={(e) => onChange("companyName", e.target.value)}
       />
-      <TextField
+      <TextInput
         type="text"
         value={companyLocation}
         placeholder="Mountain View, CA"
@@ -37,18 +36,20 @@ function Job({ formData, onChange }) {
         onChange={(e) => onChange("companyLocation", e.target.value)}
       />
       <div>Start date:</div>
-      <DatePicker
+      <MonthPickerInput
+        name="dateStart"
         value={dateStart}
+        placeholder="2020 January"
         onChange={(newValue) => onChange("dateStart", newValue)}
-        views={["year", "month"]}
       />
       <div>End date:</div>
-      <DatePicker
+      <MonthPickerInput
+        name="dateStart"
         value={dateEnd}
+        placeholder="2022 February"
         onChange={(newValue) => onChange("dateEnd", newValue)}
-        views={["year", "month"]}
       />
-      <TextField
+      <TextInput
         value={description}
         placeholder="Collaborate with designers, optimize applications, develop features."
         label="Job Description"

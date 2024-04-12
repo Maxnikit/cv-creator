@@ -79,12 +79,18 @@ body {
 .experience {
   grid-column: 1/2;
 }
-.experience > .job {
+.job {
   display: flex;
+  border: 1px solid black;
+  border-radius: 5px;
+  padding: 10px;
   flex-direction: column;
-  gap: 10px;
+  /* gap: 10px; */
 }
-
+.jobs {
+  display: flex;
+  gap: 40px;
+}
 .outputContainer {
   margin: 0;
   height: 50px;
@@ -100,6 +106,9 @@ body {
   /* width: 100%; */
 }
 .checkboxContainer {
+  display: flex;
+  gap: 10px;
+  align-items: center;
 }
 .inputNameFields {
   display: flex;

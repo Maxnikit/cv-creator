@@ -8,7 +8,7 @@ import Experience from "./components/Experience";
 import Footer from "./components/Footer";
 import Preview from "./components/Preview";
 import "@fontsource/roboto/500.css";
-import { LocalizationProvider } from "@mui/x-date-pickers";
+
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { useState } from "react";
 import { createTheme, MantineProvider } from "@mantine/core";
@@ -41,14 +41,7 @@ function App() {
   const handleEducationInfoChange = (field, value) => {
     setEducationData({ ...educationData, [field]: value });
   };
-  const handleEducationDateChange = (field, date) => {
-    setEducationData({ ...educationData, [field]: date });
-  };
-  const getMonthByIndex = (index) => {
-    return new Date(2000, index).toLocaleString("en", {
-      month: "long",
-    });
-  };
+
   // TODO переделать функцию
   // function computeFullDate() {
   //   if (selectedDateStart && selectedDateEnd) {
@@ -112,30 +105,29 @@ function App() {
   // TODO переделать компонент experience как остальные
   return (
     <MantineProvider theme={theme}>
-      <LocalizationProvider dateAdapter={AdapterDayjs}>
-        <>
-          <Header />
-          {fullName}
-          <div className="main">
-            <General
-              formData={generalData}
-              onChange={handleGeneralInfoChange}
-            />
-            <Education
-              formData={educationData}
-              onChange={handleEducationInfoChange}
-            />
-            <Experience
-              formData={experienceData}
-              onChange={handleExperienceInfoChange}
-            />
-          </div>
-          <div className="preview">
-            <Preview />
-          </div>
-          <Footer />
-        </>
-      </LocalizationProvider>
+      <>
+        <Header />
+
+        <div className="main">
+          <General formData={generalData} onChange={handleGeneralInfoChange} />
+          <Education
+            formData={educationData}
+            onChange={handleEducationInfoChange}
+          />
+          <Experience
+            formData={experienceData}
+            onChange={handleExperienceInfoChange}
+          />
+        </div>
+        <div className="preview">
+          <Preview
+            generalData={generalData}
+            educationData={educationData}
+            experienceData={experienceData}
+          />
+        </div>
+        <Footer />
+      </>
     </MantineProvider>
   );
 }

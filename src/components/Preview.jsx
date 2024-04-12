@@ -1,7 +1,11 @@
-function Preview({}) {
+function Preview({ generalData, educationData, experienceData }) {
+  const { firstName, lastName, age, email, phone } = generalData;
   return (
     <>
-      <h1>Header</h1>
+      <h1>
+        {generalData.firstName} {generalData.lastName}
+      </h1>
+      <div></div>
     </>
   );
 }

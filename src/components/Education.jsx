@@ -1,7 +1,8 @@
 import { useState } from "react";
 
-import { TextField, Checkbox } from "@mui/material";
+import { TextInput, Checkbox } from "@mantine/core";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
+import { MonthPickerInput } from "@mantine/dates";
 
 function Education({ formData, onChange }) {
   const { school, degree, city, dateStart, dateEnd } = formData;
@@ -9,11 +10,10 @@ function Education({ formData, onChange }) {
   const handleCheckboxChange = () => {
     setIsChecked(!isChecked);
   };
-
   return (
     <div className="education section">
       <h2>Education</h2>
-      <TextField
+      <TextInput
         type="text"
         name="school"
         label="School:"
@@ -21,7 +21,7 @@ function Education({ formData, onChange }) {
         placeholder="School"
         onChange={(e) => onChange("school", e.target.value)}
       />
-      <TextField
+      <TextInput
         type="text"
         name="degree"
         label="Degree:"
@@ -29,7 +29,7 @@ function Education({ formData, onChange }) {
         placeholder="Degree"
         onChange={(e) => onChange("degree", e.target.value)}
       />
-      <TextField
+      <TextInput
         type="text"
         name="city"
         label="City:"
@@ -38,28 +38,29 @@ function Education({ formData, onChange }) {
         onChange={(e) => onChange("city", e.target.value)}
       />
       <div>Start date:</div>
-      <DatePicker
+
+      <MonthPickerInput
         name="dateStart"
         value={dateStart}
+        placeholder="2000 May"
         onChange={(newValue) => onChange("dateStart", newValue)}
-        // onChange={(newValue) => setDateStart(newValue)}
-        views={["year", "month"]}
       />
       <div className="checkboxContainer">
         <Checkbox
           onChange={handleCheckboxChange}
           checked={isChecked}
           id="checkbox"
-        />
+        />{" "}
         <label htmlFor="checkbox">Up to current time</label>
       </div>
       {!isChecked && (
         <>
           <div>End date:</div>
-          <DatePicker
+          <MonthPickerInput
+            name="dateEnd"
             value={dateEnd}
+            placeholder="2005 September"
             onChange={(newValue) => onChange("dateEnd", newValue)}
-            views={["year", "month"]}
           />
         </>
       )}
