@@ -1,5 +1,4 @@
-import { useState } from "react";
-import Input from "./Input";
+import { TextField } from "@mui/material";
 
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 function Job({ formData, onChange }) {
@@ -16,22 +15,25 @@ function Job({ formData, onChange }) {
 
   return (
     <div className="job" key={id}>
-      <input
+      <TextField
         type="text"
         value={title}
-        placeholder="Job Title"
+        label="Job Title"
+        placeholder="Frontend Developer"
         onChange={(e) => onChange("title", e.target.value)}
       />
-      <input
+      <TextField
         type="text"
         value={companyName}
-        placeholder="Company Name"
+        placeholder="Google"
+        label="Company Name"
         onChange={(e) => onChange("companyName", e.target.value)}
       />
-      <input
+      <TextField
         type="text"
         value={companyLocation}
-        placeholder="Location"
+        placeholder="Mountain View, CA"
+        label="Company Location"
         onChange={(e) => onChange("companyLocation", e.target.value)}
       />
       <div>Start date:</div>
@@ -46,9 +48,11 @@ function Job({ formData, onChange }) {
         onChange={(newValue) => onChange("dateEnd", newValue)}
         views={["year", "month"]}
       />
-      <textarea
+      <TextField
         value={description}
-        placeholder="Job Description"
+        placeholder="Collaborate with designers, optimize applications, develop features."
+        label="Job Description"
+        multiline
         onChange={(e) => onChange("description", e.target.value)}
       />
     </div>

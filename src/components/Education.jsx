@@ -1,7 +1,6 @@
 import { useState } from "react";
 
-import Input from "./Input";
-
+import { TextField, Checkbox } from "@mui/material";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 
 function Education({ formData, onChange }) {
@@ -14,7 +13,7 @@ function Education({ formData, onChange }) {
   return (
     <div className="education section">
       <h2>Education</h2>
-      <Input
+      <TextField
         type="text"
         name="school"
         label="School:"
@@ -23,7 +22,7 @@ function Education({ formData, onChange }) {
         onChange={(e) => onChange("school", e.target.value)}
         required={true}
       />
-      <Input
+      <TextField
         type="text"
         name="degree"
         label="Degree:"
@@ -32,7 +31,7 @@ function Education({ formData, onChange }) {
         onChange={(e) => onChange("degree", e.target.value)}
         required={true}
       />
-      <Input
+      <TextField
         type="text"
         name="city"
         label="City:"
@@ -50,8 +49,7 @@ function Education({ formData, onChange }) {
         views={["year", "month"]}
       />
       <div className="checkboxContainer">
-        <input
-          type="checkbox"
+        <Checkbox
           onChange={handleCheckboxChange}
           checked={isChecked}
           id="checkbox"

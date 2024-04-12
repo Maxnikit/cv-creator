@@ -1,11 +1,10 @@
-import Input from "./Input";
-
+import { TextField } from "@mui/material";
 function General({ formData, onChange }) {
   return (
     <div className="general section">
       <h2>General</h2>
       <div className="inputNameFields">
-        <Input
+        <TextField
           type="text"
           name="firstName"
           label="First name:"
@@ -14,7 +13,7 @@ function General({ formData, onChange }) {
           onChange={(e) => onChange("firstName", e.target.value)}
           required={true}
         />
-        <Input
+        <TextField
           type="text"
           name="lastName"
           label="Last name:"
@@ -24,7 +23,7 @@ function General({ formData, onChange }) {
           required={false}
         />
       </div>
-      <Input
+      <TextField
         type="number"
         name="age"
         label="Age:"
@@ -33,7 +32,7 @@ function General({ formData, onChange }) {
         onChange={(e) => onChange("age", e.target.value)}
         required={true}
       />
-      <Input
+      <TextField
         type="email"
         name="email"
         label="Email:"
@@ -42,7 +41,7 @@ function General({ formData, onChange }) {
         onChange={(e) => onChange("email", e.target.value)}
         required={true}
       />
-      <Input
+      <TextField
         type="tel"
         name="phone"
         label="Phone:"
