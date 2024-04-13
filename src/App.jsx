@@ -8,14 +8,16 @@ import Experience from "./components/Experience";
 import Footer from "./components/Footer";
 import Preview from "./components/Preview";
 import "@fontsource/roboto/500.css";
+import { useReactToPrint } from "react-to-print";
 
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { createTheme, MantineProvider } from "@mantine/core";
 
 const theme = createTheme({
   /** Put your mantine theme override here */
 });
+
 function App() {
   // General section
   const [generalData, setGeneralData] = useState({
@@ -101,7 +103,15 @@ function App() {
       })
     );
   };
-
+  // Printing
+  // TODO разобраться с печатью. узнать про forwardRef?
+  const contentToPrint = useRef(null);
+  const handlePrint = useReactToPrint({
+    documentTitle: "Print This Document",
+    onBeforePrint: () => console.log("before printing..."),
+    onAfterPrint: () => console.log("after printing..."),
+    removeAfterPrint: true,
+  });
   // TODO переделать компонент experience как остальные
   return (
     <MantineProvider theme={theme}>
@@ -109,6 +119,13 @@ function App() {
         <Header />
 
         <div className="main">
+          <button
+            onClick={() => {
+              handlePrint(null, () => contentToPrint.current);
+            }}
+          >
+            Print preview
+          </button>
           <General formData={generalData} onChange={handleGeneralInfoChange} />
           <Education
             formData={educationData}
@@ -120,6 +137,7 @@ function App() {
           />
         </div>
         <div className="preview">
+          <div ref={contentToPrint}>Hello again</div>
           <Preview
             generalData={generalData}
             educationData={educationData}
