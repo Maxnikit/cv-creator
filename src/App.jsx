@@ -10,16 +10,17 @@ import Preview from "./components/Preview";
 import "@fontsource/roboto/500.css";
 import { useReactToPrint } from "react-to-print";
 
-import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { useRef, useState } from "react";
 import { createTheme, MantineProvider } from "@mantine/core";
-
 const theme = createTheme({
   /** Put your mantine theme override here */
 });
 
 function App() {
-  // General section
+  //
+  // GENERAL SECTION
+  //
+
   const [generalData, setGeneralData] = useState({
     firstName: "",
     lastName: "",
@@ -30,9 +31,11 @@ function App() {
   const handleGeneralInfoChange = (field, value) => {
     setGeneralData({ ...generalData, [field]: value });
   };
-  const fullName = generalData.firstName + " " + generalData.lastName;
 
-  // Education section
+  //
+  // EDUCATION SECTION
+  //
+
   const [educationData, setEducationData] = useState({
     school: "",
     city: "",
@@ -72,10 +75,13 @@ function App() {
   //   }
   // }
 
-  // Experience
+  //
+  // EXPERIENCE SECTION
+  //
+
   const [experienceData, setExperienceData] = useState([
     {
-      id: 0, // Unique identifier for each job
+      id: 0,
       title: "",
       companyName: "",
       companyLocation: "",
@@ -84,7 +90,7 @@ function App() {
       description: "",
     },
     {
-      id: 1, // Unique identifier for each job
+      id: 1,
       title: "",
       companyName: "",
       companyLocation: "",
@@ -103,8 +109,11 @@ function App() {
       })
     );
   };
-  // Printing
-  // TODO разобраться с печатью. узнать про forwardRef?
+
+  //
+  // PRINTING
+  //
+
   const contentToPrint = useRef(null);
   const handlePrint = useReactToPrint({
     documentTitle: "Print This Document",
@@ -112,7 +121,7 @@ function App() {
     onAfterPrint: () => console.log("after printing..."),
     removeAfterPrint: true,
   });
-  // TODO переделать компонент experience как остальные
+
   return (
     <MantineProvider theme={theme}>
       <>
@@ -124,7 +133,7 @@ function App() {
               handlePrint(null, () => contentToPrint.current);
             }}
           >
-            Print preview
+            PRINT
           </button>
           <General formData={generalData} onChange={handleGeneralInfoChange} />
           <Education
@@ -137,12 +146,13 @@ function App() {
           />
         </div>
         <div className="preview">
-          <div ref={contentToPrint}>Hello again</div>
-          <Preview
-            generalData={generalData}
-            educationData={educationData}
-            experienceData={experienceData}
-          />
+          <div ref={contentToPrint}>
+            <Preview
+              generalData={generalData}
+              educationData={educationData}
+              experienceData={experienceData}
+            />
+          </div>
         </div>
         <Footer />
       </>
