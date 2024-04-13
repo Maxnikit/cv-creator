@@ -1,6 +1,6 @@
 import "../styles/Preview.css";
 function Preview({ generalData, educationData, experienceData }) {
-  const { firstName, lastName, age, email, phone } = generalData;
+  const { firstName, lastName, position, email, phone } = generalData;
   return (
     <>
       <div className="preview-header">
@@ -9,12 +9,12 @@ function Preview({ generalData, educationData, experienceData }) {
             {firstName} {lastName}
           </h1>
         )}
+        {position && <h3>{position}</h3>}
         <div className="preview-header-personal">
-          {age && <p>Age: {age}</p>}
           {email && (
             <p>
-              <i className="fas fa-envelope    "></i>
-              <div className="text">{email}</div>
+              <i className="fa-solid fa-envelope"></i>
+              {email}
             </p>
           )}
           {phone && (
@@ -25,9 +25,12 @@ function Preview({ generalData, educationData, experienceData }) {
           )}
         </div>
       </div>
+      <div className="preview-sidebar"></div>
       <div className="preview-main">
         <div className="preview-education"></div>
         <div className="preview-experience"></div>
+        <div className="preview-languages"></div>
+        <div className="preview-contact"></div>
       </div>
     </>
   );

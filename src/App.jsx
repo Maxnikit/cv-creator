@@ -22,11 +22,11 @@ function App() {
   //
 
   const [generalData, setGeneralData] = useState({
-    firstName: "",
-    lastName: "",
-    age: "",
-    email: "",
-    phone: "",
+    firstName: "Maxim",
+    lastName: "Nikitin",
+    position: "Frontend Developer",
+    email: "max.nikit.03@gmail.com",
+    phone: "+ 1 234 567 89 00",
   });
   const handleGeneralInfoChange = (field, value) => {
     setGeneralData({ ...generalData, [field]: value });

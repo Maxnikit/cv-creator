@@ -23,12 +23,12 @@ function General({ formData, onChange }) {
         />
       </div>
       <TextInput
-        type="number"
-        name="age"
-        label="Age:"
-        value={formData.age}
-        placeholder="33"
-        onChange={(e) => onChange("age", e.target.value)}
+        type="text"
+        name="position"
+        label="Position:"
+        value={formData.position}
+        placeholder="Frontend Developer"
+        onChange={(e) => onChange("position", e.target.value)}
       />
       <TextInput
         type="email"
