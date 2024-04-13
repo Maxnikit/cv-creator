@@ -1,0 +1,19 @@
+.preview {
+}
+
+.preview-header {
+  padding: 10px;
+  background-color: blue;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.preview-header-personal {
+  display: flex;
+  gap: 20px;
+}
+.preview-header-personal > p {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
