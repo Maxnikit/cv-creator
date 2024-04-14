@@ -39,14 +39,14 @@ function Job({ formData, onChange }) {
       <MonthPickerInput
         name="dateStart"
         value={dateStart}
-        placeholder="2020 January"
+        placeholder="January 2022"
         onChange={(newValue) => onChange("dateStart", newValue)}
       />
       <div>End date:</div>
       <MonthPickerInput
         name="dateStart"
         value={dateEnd}
-        placeholder="2022 February"
+        placeholder="February 2022"
         onChange={(newValue) => onChange("dateEnd", newValue)}
       />
       <TextInput

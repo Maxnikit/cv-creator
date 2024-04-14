@@ -45,7 +45,7 @@ function Education({ formData, onChange }) {
       <MonthPickerInput
         name="dateStart"
         value={dateStart}
-        placeholder="2000 May"
+        placeholder="May 2000"
         onChange={(newValue) => onChange("dateStart", newValue)}
       />
       <div className="checkboxContainer">
@@ -53,7 +53,7 @@ function Education({ formData, onChange }) {
           onChange={handleCheckboxChange}
           checked={isChecked}
           id="checkbox"
-        />{" "}
+        />
         <label htmlFor="checkbox">Up to current time</label>
       </div>
       {!isChecked && (
@@ -62,7 +62,7 @@ function Education({ formData, onChange }) {
           <MonthPickerInput
             name="dateEnd"
             value={dateEnd}
-            placeholder="2005 September"
+            placeholder="September 2005"
             onChange={(newValue) => onChange("dateEnd", newValue)}
           />
         </>

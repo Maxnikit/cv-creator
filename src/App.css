@@ -15,7 +15,7 @@
   --background: #f7f6fc;
   --text-inverse: ;
   --primary: #6545c5;
-  --secondary: #a18ce2;
+  --secondary: #442a91;
   --accent: #7c5dde;
 }
 
@@ -27,14 +27,13 @@
   --secondary: #321d72;
   --accent: #3f21a1;
 } */
+
 body {
-  display: flex;
-  flex-direction: column;
-  color: var(--text);
-  background-color: var(--background);
+  /* color: var(--text); */
 }
 #root {
   width: 100%;
+
   display: grid;
   grid-template-columns: auto 10% 1fr;
   grid-template-rows: auto auto auto;
@@ -44,6 +43,14 @@ body {
   grid-column: 1/2;
   display: flex;
   flex-direction: column;
+}
+.main > button {
+  margin-block: 10px;
+  display: flex;
+  background-color: var(--secondary);
+}
+.main button i {
+  margin-inline: 10px;
 }
 header {
   grid-row: 1/2;
@@ -55,7 +62,7 @@ footer {
 }
 .preview {
   position: sticky;
-  top: 10px;
+  top: 1px;
   /* Old size for page(too small) */
   /* width: 595.28px;
   height: 841.89px; */
@@ -65,7 +72,9 @@ footer {
   grid-row: 2/3;
 
   grid-column: 3/4;
-  border: 1px solid red;
+  outline: 3px solid black;
+  transform: scale(0.9);
+  transform-origin: top left;
 }
 .printContainer {
   width: 100%;

@@ -180,10 +180,14 @@ function App() {
               handlePrint(null, () => contentToPrint.current);
             }}
           >
-            PRINT
+            <i className="fa fa-print"></i> Print
           </Button>
-          <Button onClick={handleClear}>Clear</Button>
-          <Button onClick={setPreset}>Preset</Button>
+          <Button onClick={handleClear}>
+            <i className="fa fa-trash"></i> Clear
+          </Button>
+          <Button onClick={setPreset}>
+            <i className="fa fa-user"></i> Set preset
+          </Button>
           <General formData={generalData} onChange={handleGeneralInfoChange} />
           <Education
             formData={educationData}
