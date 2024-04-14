@@ -129,7 +129,7 @@ function App() {
 
   const contentToPrint = useRef(null);
   const handlePrint = useReactToPrint({
-    documentTitle: "Print This Document",
+    documentTitle: "CV letter",
     onBeforePrint: () => console.log("before printing..."),
     onAfterPrint: () => console.log("after printing..."),
     removeAfterPrint: true,
