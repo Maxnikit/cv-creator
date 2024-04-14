@@ -31,8 +31,8 @@
 body {
   /* color: var(--text); */
 }
-#root {
-  width: 100%;
+.app {
+  /* width: 100%; */
 
   display: grid;
   grid-template-columns: auto 10% 1fr;
@@ -173,20 +173,7 @@ footer {
 
 @media only screen and (max-width: 600px) {
   #root {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  .preview {
-    position: static;
-    display: none;
-  }
-  .main {
-    width: 100%;
-  }
-  .section {
-    width: 100%;
-    margin-inline: 0;
+    text-align: center;
   }
 }
 

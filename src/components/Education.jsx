@@ -1,7 +1,6 @@
 import { useState } from "react";
 
 import { TextInput, Checkbox } from "@mantine/core";
-import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 import { MonthPickerInput } from "@mantine/dates";
 
 function Education({ formData, onChange }) {

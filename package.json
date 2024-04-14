@@ -16,14 +16,11 @@
     "@mantine/core": "^7.7.2",
     "@mantine/dates": "^7.7.2",
     "@mantine/hooks": "^7.7.2",
-    "@mui/icons-material": "^5.15.15",
-    "@mui/material": "^5.15.15",
-    "@mui/x-date-pickers": "^7.1.1",
     "dayjs": "^1.11.10",
     "prop-types": "^15.8.1",
     "react": "^18.2.0",
+    "react-device-detect": "^2.2.3",
     "react-dom": "^18.2.0",
-    "react-lite-month-picker": "^1.2.18",
     "react-to-print": "^2.15.1"
   },
   "devDependencies": {

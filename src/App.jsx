@@ -171,7 +171,7 @@ function App() {
   };
   return (
     <MantineProvider theme={theme}>
-      <>
+      <div className="app">
         <Header />
 
         <div className="main">
@@ -208,7 +208,7 @@ function App() {
           </div>
         </div>
         <Footer />
-      </>
+      </div>
     </MantineProvider>
   );
 }
