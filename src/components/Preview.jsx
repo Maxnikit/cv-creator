@@ -121,24 +121,6 @@ function Preview({ generalData, educationData, experienceData, projectsData }) {
           )}
         </div>
       </div>
-      <div className={styles.sidebar}>
-        <div className={styles.philosophy}>
-          <h2>MY LIFE PHILOSOPHY</h2>
-          <hr className={styles.lineHeader} />
-        </div>
-        <div className={styles.achievements}>
-          <h2>MOST PROUD OF</h2>
-          <hr className={styles.lineHeader} />
-        </div>
-        <div className={styles.strengths}>
-          <h2>STRENGTHS</h2>
-          <hr className={styles.lineHeader} />
-        </div>
-        <div className={styles.languages}>
-          <h2>LANGUAGES</h2>
-          <hr className={styles.lineHeader} />
-        </div>
-      </div>
     </div>
   );
 }
