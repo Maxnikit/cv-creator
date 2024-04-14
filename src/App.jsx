@@ -173,21 +173,23 @@ function App() {
     <MantineProvider theme={theme}>
       <div className="app">
         <Header />
-
         <div className="main">
-          <Button
-            onClick={() => {
-              handlePrint(null, () => contentToPrint.current);
-            }}
-          >
-            <i className="fa fa-print"></i> Print
-          </Button>
-          <Button onClick={handleClear}>
-            <i className="fa fa-trash"></i> Clear
-          </Button>
-          <Button onClick={setPreset}>
-            <i className="fa fa-user"></i> Set preset
-          </Button>
+          <div className="mainButtons">
+            <Button onClick={handleClear}>
+              <i className="fa fa-trash"></i>Clear
+            </Button>
+            <Button onClick={setPreset}>
+              <i className="fa fa-user"></i>Example
+            </Button>
+            <Button
+              onClick={() => {
+                handlePrint(null, () => contentToPrint.current);
+              }}
+            >
+              <i className="fa fa-print"></i>Print
+            </Button>
+          </div>
+
           <General formData={generalData} onChange={handleGeneralInfoChange} />
           <Education
             formData={educationData}

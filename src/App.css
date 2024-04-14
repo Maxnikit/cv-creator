@@ -44,12 +44,20 @@ body {
   display: flex;
   flex-direction: column;
 }
-.main > button {
+
+.mainButtons {
+  display: flex;
+  gap: 10px;
+  margin-block: 0;
+  margin-inline: 20px;
+}
+.mainButtons > button {
+  width: 100%;
   margin-block: 10px;
   display: flex;
   background-color: var(--secondary);
 }
-.main button i {
+.mainButtons > button i {
   margin-inline: 10px;
 }
 header {
@@ -80,15 +88,14 @@ footer {
   width: 100%;
   height: 100%;
 }
-.main > * {
-  margin: 20px;
-  box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.2);
-}
+
 .section {
   padding: 20px;
   width: 400px;
   color: var(--background);
   background-color: var(--primary);
+  box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.2);
+  margin: 20px;
 }
 .general > .accordion,
 .education > .accordion,
