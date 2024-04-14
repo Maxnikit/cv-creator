@@ -196,7 +196,7 @@ function App() {
       position: "Frontend Developer",
       email: "max.nikit.03@gmail.com",
       phone: "+ 1 234 567 89 00",
-      image: "../public/profile.png",
+      image: profileImage,
     });
     setEducationData({
       school: "SEVSU",
