@@ -11,7 +11,7 @@ import "@fontsource/roboto/500.css";
 import { useReactToPrint } from "react-to-print";
 
 import { useRef, useState } from "react";
-import { createTheme, MantineProvider } from "@mantine/core";
+import { Button, createTheme, MantineProvider } from "@mantine/core";
 const theme = createTheme({
   /** Put your mantine theme override here */
 });
@@ -37,43 +37,15 @@ function App() {
   //
 
   const [educationData, setEducationData] = useState({
-    school: "",
-    city: "",
-    degree: "",
-    dateStart: null,
+    school: "SEVSU",
+    city: "Sevastopol",
+    degree: "Robotics Engineer",
+    dateStart: new Date("2016-09-01"),
     dateEnd: null,
   });
   const handleEducationInfoChange = (field, value) => {
     setEducationData({ ...educationData, [field]: value });
   };
-
-  // TODO переделать функцию
-  // function computeFullDate() {
-  //   if (selectedDateStart && selectedDateEnd) {
-  //     const startMonth = getMonthByIndex(selectedDateStart.$M);
-  //     const endMonth = getMonthByIndex(selectedDateEnd.$M);
-
-  //     setFormData({
-  //       ...formData,
-  //       fullDate:
-  //         startMonth +
-  //         " " +
-  //         selectedDateStart.$y +
-  //         " - " +
-  //         endMonth +
-  //         " " +
-  //         selectedDateEnd.$y,
-  //     });
-  //     console.log(formData.fullDate);
-  //   } else if (selectedDateStart && selectedDateEnd === null) {
-  //     const startMonth = getMonthByIndex(selectedDateStart.$M);
-  //     setFormData({
-  //       ...formData,
-  //       fullDate: startMonth + " " + selectedDateStart.$y + " - " + "Present",
-  //     });
-  //     console.log(formData.fullDate);
-  //   }
-  // }
 
   //
   // EXPERIENCE SECTION
@@ -82,21 +54,21 @@ function App() {
   const [experienceData, setExperienceData] = useState([
     {
       id: 0,
-      title: "",
-      companyName: "",
-      companyLocation: "",
-      dateStart: null,
-      dateEnd: null,
-      description: "",
+      title: "Frontend Developer",
+      companyName: "Google",
+      companyLocation: "Mountain View, CA",
+      dateStart: new Date("2020-09-01"),
+      dateEnd: new Date("2021-09-01"),
+      description: "Coloring buttons",
     },
     {
       id: 1,
-      title: "",
-      companyName: "",
-      companyLocation: "",
-      dateStart: null,
+      title: "Farmer",
+      companyName: "Farmer's Market",
+      companyLocation: "Austin, Texas",
+      dateStart: new Date("2021-09-01"),
       dateEnd: null,
-      description: "",
+      description: "Growing potatoes",
     },
   ]);
   const handleExperienceInfoChange = (jobId, field, value) => {
@@ -122,19 +94,96 @@ function App() {
     removeAfterPrint: true,
   });
 
+  //
+  // Data reset and preset
+  //
+  const handleClear = () => {
+    setGeneralData({
+      firstName: "",
+      lastName: "",
+      position: "",
+      email: "",
+      phone: "",
+    });
+    setEducationData({
+      school: "",
+      city: "",
+      degree: "",
+      dateStart: null,
+      dateEnd: null,
+    });
+    setExperienceData([
+      {
+        id: 0,
+        title: "",
+        companyName: "",
+        companyLocation: "",
+        dateStart: null,
+        dateEnd: null,
+        description: "",
+      },
+      {
+        id: 1,
+        title: "",
+        companyName: "",
+        companyLocation: "",
+        dateStart: null,
+        dateEnd: null,
+        description: "",
+      },
+    ]);
+  };
+  const setPreset = () => {
+    setGeneralData({
+      firstName: "Maxim",
+      lastName: "Nikitin",
+      position: "Frontend Developer",
+      email: "max.nikit.03@gmail.com",
+      phone: "+ 1 234 567 89 00",
+    });
+    setEducationData({
+      school: "SEVSU",
+      city: "Sevastopol",
+      degree: "Robotics Engineer",
+      dateStart: new Date("2016-09-01"),
+      dateEnd: null,
+    });
+    setExperienceData([
+      {
+        id: 0,
+        title: "Frontend Developer",
+        companyName: "Google",
+        companyLocation: "Mountain View, CA",
+        dateStart: new Date("2020-09-01"),
+        dateEnd: new Date("2021-09-01"),
+        description: "Coloring buttons",
+      },
+      {
+        id: 1,
+        title: "Farmer",
+        companyName: "Farmer's Market",
+        companyLocation: "Austin, Texas",
+        dateStart: new Date("2021-09-01"),
+        dateEnd: null,
+        description: "Growing potatoes",
+      },
+    ]);
+  };
   return (
     <MantineProvider theme={theme}>
       <>
         <Header />
 
         <div className="main">
-          <button
+          <Button
             onClick={() => {
               handlePrint(null, () => contentToPrint.current);
             }}
           >
             PRINT
-          </button>
+          </Button>
+          <Button onClick={handleClear}>Clear</Button>
+          <Button onClick={setPreset}>Preset</Button>
           <General formData={generalData} onChange={handleGeneralInfoChange} />
           <Education
             formData={educationData}
@@ -146,7 +195,7 @@ function App() {
           />
         </div>
         <div className="preview">
-          <div ref={contentToPrint}>
+          <div className="printContainer" ref={contentToPrint}>
             <Preview
               generalData={generalData}
               educationData={educationData}

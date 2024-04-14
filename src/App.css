@@ -2,23 +2,23 @@
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
-
+  max-width: 1200px;
+  margin: 0 auto;
   color-scheme: light dark;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-}
 
-:root {
   --text: #0c0914;
   --background: #f7f6fc;
-  --text-inverse: var(var(--background));
+  --text-inverse: ;
   --primary: #6545c5;
   --secondary: #a18ce2;
   --accent: #7c5dde;
 }
+
 /* TODO научиться определять текущую тему и менять её, а пока оставлю только светлую */
 /* :root[data-theme="dark"] {
   --text: #edeaf6;
@@ -36,7 +36,7 @@ body {
 #root {
   width: 100%;
   display: grid;
-  grid-template-columns: auto 1fr;
+  grid-template-columns: auto 10% 1fr;
   grid-template-rows: auto auto auto;
 }
 .main {
@@ -56,14 +56,21 @@ footer {
 .preview {
   position: sticky;
   top: 10px;
-  width: 595.28px;
-  height: 841.89px;
+  /* Old size for page(too small) */
+  /* width: 595.28px;
+  height: 841.89px; */
+  /* New size for testing */
+  width: 794px;
+  height: 1122px;
   grid-row: 2/3;
 
-  grid-column: 2/3;
+  grid-column: 3/4;
   border: 1px solid red;
 }
-
+.printContainer {
+  width: 100%;
+  height: 100%;
+}
 .main > * {
   margin: 20px;
   box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.2);

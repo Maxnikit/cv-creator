@@ -8,8 +8,11 @@ function Education({ formData, onChange }) {
   const { school, degree, city, dateStart, dateEnd } = formData;
   const [isChecked, setIsChecked] = useState(true);
   const handleCheckboxChange = () => {
+    onChange("dateEnd", null);
+
     setIsChecked(!isChecked);
   };
+
   return (
     <div className="education section">
       <h2>Education</h2>
