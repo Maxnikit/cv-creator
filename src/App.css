@@ -1,51 +1,94 @@
-/* Color Variables */
 :root {
-  --primary: #2196f3;
-  --primary-light: #bbdefb;
-  --primary-dark: #1e88e5;
-  --secondary: #4caf50;
-  --secondary-light: #8bc34a;
-  --secondary-dark: #43a047;
-  --accent: #ff9800;
-  --accent-light: #ffc107;
-  --accent-dark: #ff5722;
-  --surface: #ffffff;
-  --surface-dark: #f5f5f5;
-  --surface-light: #fafafa;
-  --background: #242424;
-  --background-dark: #1e1e1e;
-  --background-light: #303030;
-  --text: #212121;
-  --text-inverse: #ffffff;
-  --error: #f44336;
-  --warning: #ffc107;
-  --success: #4caf50;
-  --info: #2196f3;
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+  max-width: 1200px;
+  margin: 0 auto;
+  color-scheme: light dark;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  --text: #0c0914;
+  --background: #f7f6fc;
+  --text-inverse: ;
+  --primary: #6545c5;
+  --secondary: #442a91;
+  --accent: #7c5dde;
 }
 
-/* Example usage: background-color: var(--primary); */
+/* TODO научиться определять текущую тему и менять её, а пока оставлю только светлую */
+/* :root[data-theme="dark"] {
+  --text: #edeaf6;
+  --background: #030308;
+  --primary: #5b3bba;
+  --secondary: #321d72;
+  --accent: #3f21a1;
+} */
 
 body {
-  display: flex;
-  flex-direction: column;
-  background-color: var(--background);
+  /* color: var(--text); */
 }
 #root {
   width: 100%;
+
+  display: grid;
+  grid-template-columns: auto 10% 1fr;
+  grid-template-rows: auto auto auto;
 }
 .main {
-  display: grid;
-  grid-template-columns: 1fr 1fr 3fr;
-  /* gap: 10px; */
+  grid-row: 2/3;
+  grid-column: 1/2;
+  display: flex;
+  flex-direction: column;
+}
+.main > button {
+  margin-block: 10px;
+  display: flex;
+  background-color: var(--secondary);
+}
+.main button i {
+  margin-inline: 10px;
+}
+header {
+  grid-row: 1/2;
+  grid-column: 1/3;
+}
+footer {
+  grid-row: 3/4;
+  grid-column: 1/3;
+}
+.preview {
+  position: sticky;
+  top: 1px;
+  /* Old size for page(too small) */
+  /* width: 595.28px;
+  height: 841.89px; */
+  /* New size for testing */
+  width: 794px;
+  height: 1122px;
+  grid-row: 2/3;
+
+  grid-column: 3/4;
+  outline: 3px solid black;
+  transform: scale(0.9);
+  transform-origin: top left;
+}
+.printContainer {
+  width: 100%;
+  height: 100%;
 }
 .main > * {
   margin: 20px;
   box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.2);
 }
-.general,
-.education,
-.experience {
-  width: 500px;
+.section {
+  padding: 20px;
+  width: 400px;
+  color: var(--background);
+  background-color: var(--primary);
 }
 .general > .accordion,
 .education > .accordion,
@@ -75,12 +118,18 @@ body {
 .experience {
   grid-column: 1/2;
 }
-.experience > .job {
+.job {
   display: flex;
+  border: 1px solid black;
+  border-radius: 5px;
+  padding: 10px;
   flex-direction: column;
-  gap: 10px;
+  /* gap: 10px; */
 }
-
+.jobs {
+  display: flex;
+  gap: 40px;
+}
 .outputContainer {
   margin: 0;
   height: 50px;
@@ -96,6 +145,9 @@ body {
   /* width: 100%; */
 }
 .checkboxContainer {
+  display: flex;
+  gap: 10px;
+  align-items: center;
 }
 .inputNameFields {
   display: flex;
@@ -120,17 +172,21 @@ body {
 }
 
 @media only screen and (max-width: 600px) {
-  .main {
+  #root {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 20px;
   }
-  .general,
-  .experience,
-  .education {
+  .preview {
+    position: static;
+    display: none;
+  }
+  .main {
     width: 100%;
-    margin: 20px;
+  }
+  .section {
+    width: 100%;
+    margin-inline: 0;
   }
 }
 
