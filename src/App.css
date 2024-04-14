@@ -172,17 +172,21 @@ footer {
 }
 
 @media only screen and (max-width: 600px) {
-  .main {
+  #root {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 20px;
   }
-  .general,
-  .experience,
-  .education {
+  .preview {
+    position: static;
+    display: none;
+  }
+  .main {
     width: 100%;
-    margin: 20px;
+  }
+  .section {
+    width: 100%;
+    margin-inline: 0;
   }
 }
 
