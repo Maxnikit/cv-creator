@@ -12,6 +12,7 @@ import { useReactToPrint } from "react-to-print";
 
 import { useRef, useState } from "react";
 import { Button, createTheme, MantineProvider } from "@mantine/core";
+import Projects from "./components/Projects";
 const theme = createTheme({
   /** Put your mantine theme override here */
 });
@@ -27,11 +28,19 @@ function App() {
     position: "Frontend Developer",
     email: "max.nikit.03@gmail.com",
     phone: "+ 1 234 567 89 00",
+    image: "../public/profile.png",
   });
   const handleGeneralInfoChange = (field, value) => {
+    console.log(value);
     setGeneralData({ ...generalData, [field]: value });
   };
-
+  const processImage = (image) => {
+    const reader = new FileReader();
+    reader.readAsDataURL(image);
+    reader.onloadend = () => {
+      handleGeneralInfoChange("image", reader.result);
+    };
+  };
   //
   // EDUCATION SECTION
   //
@@ -81,6 +90,38 @@ function App() {
       })
     );
   };
+  //
+  // PROJECTS SECTION
+  //
+
+  const [projectsData, setProjectsData] = useState([
+    {
+      id: 0,
+      name: "CV-Creator",
+      summary: "App for creating beautiful CVs",
+      description:
+        "React app that takes info from user and making a CV in .pdf format",
+    },
+    {
+      id: 1,
+      name: "Battleship Game",
+      summary: "Game about destroying enemy ships",
+      description: "React app for playing Battleship",
+    },
+  ]);
+  //
+  // Universal section change handler
+  //
+  const handleChange = (stateValue, setter, id, field, newValue) => {
+    setter(
+      stateValue.map((content) => {
+        if (content.id === id) {
+          return { ...content, [field]: newValue };
+        }
+        return content;
+      })
+    );
+  };
 
   //
   // PRINTING
@@ -104,6 +145,7 @@ function App() {
       position: "",
       email: "",
       phone: "",
+      image: null,
     });
     setEducationData({
       school: "",
@@ -132,6 +174,20 @@ function App() {
         description: "",
       },
     ]);
+    setProjectsData([
+      {
+        id: 0,
+        name: "",
+        summary: "",
+        description: "",
+      },
+      {
+        id: 1,
+        name: "",
+        summary: "",
+        description: "",
+      },
+    ]);
   };
   const setPreset = () => {
     setGeneralData({
@@ -140,6 +196,7 @@ function App() {
       position: "Frontend Developer",
       email: "max.nikit.03@gmail.com",
       phone: "+ 1 234 567 89 00",
+      image: "../public/profile.png",
     });
     setEducationData({
       school: "SEVSU",
@@ -168,6 +225,21 @@ function App() {
         description: "Growing potatoes",
       },
     ]);
+    setProjectsData([
+      {
+        id: 0,
+        name: "CV-Creator",
+        summary: "App for creating beautiful CVs",
+        description:
+          "React app that takes info from user and making a CV in .pdf format",
+      },
+      {
+        id: 1,
+        name: "Battleship Game",
+        summary: "Game about destroying enemy ships",
+        description: "React app for playing Battleship",
+      },
+    ]);
   };
   return (
     <MantineProvider theme={theme}>
@@ -190,7 +262,11 @@ function App() {
             </Button>
           </div>
 
-          <General formData={generalData} onChange={handleGeneralInfoChange} />
+          <General
+            formData={generalData}
+            onChange={handleGeneralInfoChange}
+            processImage={processImage}
+          />
           <Education
             formData={educationData}
             onChange={handleEducationInfoChange}
@@ -199,6 +275,11 @@ function App() {
             formData={experienceData}
             onChange={handleExperienceInfoChange}
           />
+          <Projects
+            formData={projectsData}
+            setter={setProjectsData}
+            onChange={handleChange}
+          />
         </div>
         <div className="preview">
           <div className="printContainer" ref={contentToPrint}>
@@ -206,10 +287,10 @@ function App() {
               generalData={generalData}
               educationData={educationData}
               experienceData={experienceData}
+              projectsData={projectsData}
             />
           </div>
         </div>
-        <Footer />
       </div>
     </MantineProvider>
   );

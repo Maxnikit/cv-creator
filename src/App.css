@@ -96,18 +96,9 @@ footer {
   background-color: var(--primary);
   box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.2);
   margin: 20px;
+  border-radius: 10px;
 }
-.general > .accordion,
-.education > .accordion,
-.experience > .accordion {
-  /* Менять цвет задника карточки тут */
-  background-color: var(--background-dark);
-  color: white;
-}
-.job > .accordion {
-  background-color: var(--background-light);
-  color: white;
-}
+
 .general {
   grid-column: 1/2;
 
@@ -125,18 +116,20 @@ footer {
 .experience {
   grid-column: 1/2;
 }
+.jobs {
+  display: flex;
+  gap: 20px;
+}
 .job {
   display: flex;
   border: 1px solid black;
-  border-radius: 5px;
+  border-radius: 10px;
   padding: 10px;
   flex-direction: column;
-  /* gap: 10px; */
+  gap: 10px;
+  background-color: var(--secondary);
 }
-.jobs {
-  display: flex;
-  gap: 40px;
-}
+
 .outputContainer {
   margin: 0;
   height: 50px;
@@ -187,4 +180,15 @@ footer {
 .card-container {
   display: flex;
   flex-direction: column;
+}
+.projects {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.generalHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }

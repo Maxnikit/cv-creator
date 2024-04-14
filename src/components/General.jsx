@@ -1,9 +1,17 @@
-import { TextInput } from "@mantine/core";
+import { Button, FileButton, TextInput } from "@mantine/core";
 // import classes from "./TextInput.module.css";
-function General({ formData, onChange }) {
+function General({ formData, onChange, processImage }) {
   return (
     <div className="general section">
-      <h2>General</h2>
+      <div className="generalHeader">
+        <h2>General</h2>
+        <FileButton
+          onChange={(file) => processImage(file)}
+          accept="image/png,image/jpeg"
+        >
+          {(props) => <Button {...props}>Upload image</Button>}
+        </FileButton>
+      </div>
       <div className="inputNameFields">
         <TextInput
           type="text"
