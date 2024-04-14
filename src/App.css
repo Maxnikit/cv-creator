@@ -13,10 +13,7 @@
 
   --text: #0c0914;
   --background: #f7f6fc;
-  --text-inverse: ;
-  --primary: #6545c5;
-  --secondary: #442a91;
-  --accent: #7c5dde;
+  --primary: #f0e7e7;
 }
 
 /* TODO научиться определять текущую тему и менять её, а пока оставлю только светлую */
@@ -49,10 +46,13 @@
   margin-inline: 20px;
 }
 .mainButtons > button {
+  box-shadow: 3px 3px 3px 0px rgba(0, 0, 0, 0.3);
   width: 100%;
   margin-block: 10px;
   display: flex;
-  background-color: var(--secondary);
+  background-color: var(--background);
+  color: black;
+  /* border: 1px solid black; */
 }
 .mainButtons > button i {
   margin-inline: 10px;
@@ -89,9 +89,10 @@ footer {
 .section {
   padding: 20px;
   width: 400px;
-  color: var(--background);
+  color: black;
   background-color: var(--primary);
-  box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.2);
+
+  box-shadow: 3px 3px 3px 0px rgba(0, 0, 0, 0.3);
   margin: 20px;
   border-radius: 10px;
 }
@@ -119,8 +120,7 @@ footer {
 }
 .job {
   display: flex;
-  border: 1px solid black;
-  border-radius: 10px;
+
   padding: 10px;
   flex-direction: column;
   gap: 10px;

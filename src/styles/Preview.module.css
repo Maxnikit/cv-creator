@@ -15,6 +15,7 @@
 .lineHeader {
   height: 4px;
   background-color: rgb(171, 171, 79);
+  background-color: #228be6;
 }
 .lineContent {
   height: 1px;
