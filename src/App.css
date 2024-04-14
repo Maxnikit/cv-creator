@@ -12,8 +12,8 @@
   -moz-osx-font-smoothing: grayscale;
 
   --text: #0c0914;
-  --background: #f7f6fc;
-  --primary: #f0e7e7;
+  --background: #ffffff;
+  --primary: #f7f6fc;
 }
 
 /* TODO научиться определять текущую тему и менять её, а пока оставлю только светлую */
@@ -91,7 +91,7 @@ footer {
   width: 400px;
   color: black;
   background-color: var(--primary);
-
+  /* border: 1px solid black; */
   box-shadow: 3px 3px 3px 0px rgba(0, 0, 0, 0.3);
   margin: 20px;
   border-radius: 10px;
