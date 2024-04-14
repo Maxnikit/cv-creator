@@ -261,15 +261,10 @@ function App() {
               <i className="fa fa-print"></i>Print
             </Button>
           </div>
-
           <General
             formData={generalData}
             onChange={handleGeneralInfoChange}
             processImage={processImage}
-          />
-          <Education
-            formData={educationData}
-            onChange={handleEducationInfoChange}
           />
           <Experience
             formData={experienceData}
@@ -279,6 +274,10 @@ function App() {
             formData={projectsData}
             setter={setProjectsData}
             onChange={handleChange}
+          />
+          <Education
+            formData={educationData}
+            onChange={handleEducationInfoChange}
           />
         </div>
         <div className="preview">
