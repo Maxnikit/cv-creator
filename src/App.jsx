@@ -5,7 +5,7 @@ import Header from "./components/Header";
 import General from "./components/General";
 import Education from "./components/Education";
 import Experience from "./components/Experience";
-
+import profileImage from "../public/profile.png";
 import Preview from "./components/Preview";
 import "@fontsource/roboto/500.css";
 import { useReactToPrint } from "react-to-print";
@@ -28,7 +28,7 @@ function App() {
     position: "Frontend Developer",
     email: "max.nikit.03@gmail.com",
     phone: "+ 1 234 567 89 00",
-    image: "../public/profile.png",
+    image: profileImage,
   });
   const handleGeneralInfoChange = (field, value) => {
     console.log(value);
