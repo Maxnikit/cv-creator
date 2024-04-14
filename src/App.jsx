@@ -5,7 +5,7 @@ import Header from "./components/Header";
 import General from "./components/General";
 import Education from "./components/Education";
 import Experience from "./components/Experience";
-import Footer from "./components/Footer";
+
 import Preview from "./components/Preview";
 import "@fontsource/roboto/500.css";
 import { useReactToPrint } from "react-to-print";

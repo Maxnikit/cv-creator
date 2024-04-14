@@ -1,4 +1,3 @@
-import { Button } from "@mantine/core";
 import Project from "./Project";
 function Projects({ formData, setter, onChange }) {
   return (

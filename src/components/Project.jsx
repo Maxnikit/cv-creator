@@ -1,5 +1,5 @@
 import { TextInput, Textarea } from "@mantine/core";
-import { MonthPickerInput } from "@mantine/dates";
+
 function Project({ formData, onChange }) {
   // Destructure the jobData for easier access to properties
   const { id, name, summary, description } = formData;
