@@ -1,8 +1,9 @@
-# React + Vite
+# CV-Creator
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This web app allows users to input their info and get beautiful CV letter in .pdf format!
 
-Currently, two official plugins are available:
+## Preview:
+![image](https://github.com/Maxnikit/cv-creator/assets/42117027/55ca1a69-64f3-4493-8b93-4b896af7bd4e)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Usage:
+[Follow link](https://cv-application-qjn.pages.dev/)
