@@ -1,7 +1,7 @@
 function Header() {
   return (
     <header>
-      <h1>CV Application</h1>
+      <h1>CV-Creator by Maxnikit</h1>
     </header>
   );
 }
